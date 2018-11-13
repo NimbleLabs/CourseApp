@@ -1,0 +1,1 @@
+enum role: [:user, :owner, :admin]
