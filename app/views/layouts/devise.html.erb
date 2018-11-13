@@ -20,33 +20,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand" href="/">NimbleHQ</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-
-        <% if user_signed_in? %>
-
-            <li class="nav-item active">
-              <%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete %>
-            </li>
-
-        <% else %>
-
-            <li class="nav-item active">
-              <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
-            </li>
-
-        <% end %>
-
-      </ul>
-    </div>
-  </div>
-</nav>
+<%= render 'shared/nav_menu' %>
 
 <div class="container mt-5">
   <div class="row">

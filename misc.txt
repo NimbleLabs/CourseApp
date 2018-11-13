@@ -1,26 +1,9 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-sm-12 col-md-6 offset-md-3">
-      <div class="card">
-        <div class="card-body">
+rails g scaffold Course title:string description:text
+rails g scaffold Unit title:string description:text course:references
+rails g scaffold Lesson title:string content:text unit:references
 
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+t.string :slug, index: true, unique: true
 
-
-
-  layout :layout_by_resource
-
-  private
-
-  def layout_by_resource
-    if devise_controller?
-      'devise'
-    else
-      'application'
-    end
-  end
+extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
