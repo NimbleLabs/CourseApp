@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="container mt-5">
+
+  <h1><%= @unit.title %></h1>
+
+  <p>
+    <%= @unit.description %>
+  </p>
+
+  <%= link_to 'Back to Course', course_path(@unit.course) %>
+</div>

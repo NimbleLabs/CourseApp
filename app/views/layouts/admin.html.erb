@@ -17,6 +17,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'home', media: 'all' %>
 
+  <%= stylesheet_link_tag 'trix', media: 'all' %>
+  <%= javascript_include_tag 'trix' %>
+
 </head>
 <body>
 
@@ -33,6 +36,14 @@
 
           <li class="nav-item">
             <%= link_to 'Courses', admin_courses_path, class: 'nav-link' %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Units', admin_units_path, class: 'nav-link' %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Lessons', admin_lessons_path, class: 'nav-link' %>
           </li>
 
         </ul>

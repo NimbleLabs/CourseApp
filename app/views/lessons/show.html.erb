@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container mt-5">
+
+  <h1><%= @lesson.title %></h1>
+
+  <% if @lesson.video.attached? %>
+
+      <video width="800" controls>
+        <source src="<%= url_for(@lesson.video) %>" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+
+  <% end %>
+
+  <p>
+    <%= @lesson.content.html_safe %>
+  </p>
+
+  <p>
+    <strong>Unit:</strong>
+    <%= @lesson.unit.title %>
+  </p>
+
+  <%= link_to 'Back to Unit', unit_path(@lesson.unit) %>
+</div>

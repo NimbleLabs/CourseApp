@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @unit.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @unit.description %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @unit.course.title %>
+</p>
+
+<%= link_to 'Edit', edit_unit_path(@unit) %> |
+<%= link_to 'Back', units_path %>

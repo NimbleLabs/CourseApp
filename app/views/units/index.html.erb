@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Units</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Course</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @units.each do |unit| %>
+      <tr>
+        <td><%= unit.title %></td>
+        <td><%= unit.description %></td>
+        <td><%= unit.course %></td>
+        <td><%= link_to 'Show', unit %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

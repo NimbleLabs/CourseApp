@@ -1,0 +1,48 @@
+<%= form_with(model: [:admin, lesson], local: true) do |form| %>
+    <% if lesson.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+
+          <ul>
+            <% lesson.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+
+    <!--<div class="form-group">-->
+      <!--<%= form.label :content %>-->
+      <!--<%= form.text_area :content, class: 'form-control' %>-->
+    <!--</div>-->
+
+    <div class="form-group">
+      <%= form.label :content %>
+      <input id="lesson_content" value="<%= @lesson.content %>" type="hidden" name="lesson[content]">
+      <trix-editor input="lesson_content"></trix-editor>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :video %>
+      <%= form.file_field :video, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :video_html %>
+      <%= form.text_area :video_html, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :Unit %>
+      <%= select("lesson", "unit_id", Unit.all.collect {|p| [p.title, p.id]}, {prompt: 'Select Unit'}, class: 'form-control') %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Save', class: 'btn btn-primary' %>
+    </div>
+<% end %>
