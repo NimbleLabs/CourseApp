@@ -7,5 +7,5 @@ class Unit < ApplicationRecord
   validates_presence_of :course
 
   belongs_to :course
-  has_many :lessons
+  has_many :lessons, dependent: :destroy
 end

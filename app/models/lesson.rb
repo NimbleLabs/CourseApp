@@ -4,5 +4,6 @@ class Lesson < ApplicationRecord
 
   belongs_to :unit
 
+  has_one_attached :image
   has_one_attached :video
 end

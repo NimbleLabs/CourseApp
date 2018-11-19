@@ -5,20 +5,24 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+      <% if user_signed_in? %>
+          <span class="navbar-text">Welcome <%= current_user.full_name %>!</span>
+      <% end %>
+
       <ul class="navbar-nav">
 
         <% if user_signed_in? %>
+
+            <li class="nav-item">
+              <%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete %>
+            </li>
 
             <% if current_user.admin? %>
                 <li class="nav-item">
                   <%= link_to 'Admin', admin_path, class: 'nav-link' %>
                 </li>
             <% end %>
-
-
-            <li class="nav-item">
-              <%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete %>
-            </li>
 
         <% else %>
 
@@ -27,10 +31,6 @@
             </li>
 
         <% end %>
-
-        <li class="nav-item">
-          <%= link_to 'Courses', courses_path, class: 'nav-link' %>
-        </li>
 
       </ul>
     </div>

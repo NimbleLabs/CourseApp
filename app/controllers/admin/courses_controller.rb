@@ -60,7 +60,7 @@ class Admin::CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html {redirect_to courses_url, notice: 'Course was successfully destroyed.'}
+      format.html {redirect_to admin_courses_url, notice: 'Course was successfully destroyed.'}
       format.json {head :no_content}
     end
   end
@@ -73,7 +73,7 @@ class Admin::CoursesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def course_params
-    params.require(:course).permit(:title, :description)
+    params.require(:course).permit(:title, :description, :image)
   end
 
 end

@@ -11,3 +11,12 @@ AWS S3 Storage Lesson Steps:
 3) create user on AWS
 4) Update storage.yml configuration
 5) Set environment variables in Heroku
+
+
+before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
+      u.permit(:email, :password, :password_confirmation, :full_name)
+    end
+  end

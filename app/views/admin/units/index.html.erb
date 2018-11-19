@@ -20,7 +20,7 @@
         <td><%= unit.course.title %></td>
         <td><%= link_to 'Show', unit %></td>
         <td><%= link_to 'Edit', edit_admin_unit_path(unit) %></td>
-        <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', admin_unit_path(unit), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

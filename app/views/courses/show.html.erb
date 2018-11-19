@@ -3,6 +3,13 @@
 
 <div class="container mt-5">
 
+  <% if @course.image.attached? %>
+
+      <img src="<%= url_for(@course.image) %>" width="600" >
+      </img>
+
+  <% end %>
+
   <h1><%= @course.title %></h1>
 
   <p>

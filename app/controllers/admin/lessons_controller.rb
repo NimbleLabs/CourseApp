@@ -61,7 +61,7 @@ class Admin::LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     respond_to do |format|
-      format.html { redirect_to lessons_url, notice: 'Lesson was successfully destroyed.' }
+      format.html { redirect_to admin_lessons_url, notice: 'Lesson was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -74,6 +74,6 @@ class Admin::LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:title, :content, :video_html, :unit_id, :video, :index, :availability)
+      params.require(:lesson).permit(:title, :content, :video_html, :unit_id, :video, :image, :index, :availability)
     end
 end

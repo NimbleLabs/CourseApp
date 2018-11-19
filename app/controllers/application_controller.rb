@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   layout :layout_by_resource
 
   private
@@ -17,6 +19,12 @@ class ApplicationController < ActionController::Base
 
     redirect_to root_path, flash: {alert: "You don't have enough permissions to proceed"}
     return false
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
+      u.permit(:email, :password, :password_confirmation, :full_name)
+    end
   end
 
 end
