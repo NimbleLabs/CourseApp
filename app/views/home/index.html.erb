@@ -4,3 +4,26 @@
     <h3>Learn to build your first app!</h3>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-12 offset-md-1 col-md-3 mb-5">
+
+      <% @courses.each do |course| %>
+
+          <div class="card">
+            <img class="card-img-top" src="<%= url_for(course.image) %>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%= course.title %></h5>
+              <p class="card-text"><%= course.description %></p>
+              <%= link_to 'View course', course, class: "btn btn-primary" %>
+              <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+            </div>
+          </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
