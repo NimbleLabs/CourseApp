@@ -13,10 +13,13 @@ AWS S3 Storage Lesson Steps:
 5) Set environment variables in Heroku
 
 
-before_action :configure_permitted_parameters, if: :devise_controller?
+.hero-image {
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  color: #ffffff !important;
+}
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:email, :password, :password_confirmation, :full_name)
-    end
-  end
+style="background-image: url('<%= url_for(@course.image) %>');"

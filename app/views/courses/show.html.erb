@@ -1,34 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron jumbotron-fluid text-center hero-image d-flex align-items-center"
+     style="background-image: url('<%= url_for(@course.image) %>');">
+  <div class="container">
+    <h1 class="display-4"><%= @course.title %></h1>
+  </div>
+</div>
 
 
 <div class="container mt-5">
 
-  <% if @course.image.attached? %>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @course.title %></li>
+    </ol>
+  </nav>
 
-      <img src="<%= url_for(@course.image) %>" width="600" >
-      </img>
-
-  <% end %>
-
-  <h1><%= @course.title %></h1>
-
-  <p>
+  <h3>
     <%= @course.description %>
-  </p>
+  </h3>
 
 
-  <h3>Units</h3>
+  <h1 class="my-3">Modules</h1>
 
   <div class="row">
 
     <% @course.units.each do |unit| %>
 
-        <div class="col-md-3">
+        <div class="col-md-3 mb-5">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"><%= unit.title %></h5>
               <p class="card-text"><%= unit.description %></p>
-              <%= link_to 'View Unit', unit, class: "btn btn-primary" %>
+              <%= link_to 'View module', unit, class: "btn btn-primary" %>
             </div>
           </div>
         </div>
@@ -36,7 +39,5 @@
     <% end %>
 
   </div>
-
-  <%= link_to 'Return to Course Listing', courses_path %>
 
 </div>

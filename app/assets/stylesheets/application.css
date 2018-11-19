@@ -21,14 +21,3 @@ h1 {
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 800 !important;
 }
-
-footer {
-    background-color: #2E2F30;
-    color: #ffffff;
-    min-height: 400px;
-    width: 100%;
-}
-
-ul {
-    list-style-type: none;
-}

@@ -1,13 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="jumbotron jumbotron-fluid text-center unit-jumbo d-flex align-items-center">
+  <div class="container">
+    <h1 class="display-4"><%= @unit.title %></h1>
+  </div>
+</div>
 
 
 <div class="container mt-5">
 
-  <h1><%= @unit.title %></h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <%= link_to @unit.course.title, @unit.course, class: "breadcrumb-item" %>
+      <li class="breadcrumb-item active" aria-current="page"><%= @unit.title %></li>
+    </ol>
+  </nav>
 
-  <p>
+  <h3>
     <%= @unit.description %>
-  </p>
+  </h3>
 
-  <%= link_to 'Back to Course', course_path(@unit.course) %>
+
+  <h1 class="my-3">Lessons</h1>
+
+  <div class="row">
+
+    <% @unit.lessons.each do |lesson| %>
+
+        <div class="col-md-3 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= lesson.title %></h5>
+              <%= link_to 'View lesson', lesson, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+
+    <% end %>
+
+  </div>
+
+
 </div>
+

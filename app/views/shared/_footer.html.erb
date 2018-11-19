@@ -3,27 +3,30 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-sm-12 col-md-3 mt-5">
-        <h5>Site Information</h5>
+      <div class="col-sm-12 col-md-3 my-5">
+        <h5 class="mb-3">Company</h5>
         <%= link_to 'Privacy', privacy_path %>
         <br>
         <%= link_to 'Terms and Conditions', terms_path %>
         </ul>
       </div>
 
-      <!--<div class="col-sm-12 col-md-3 mt-5">-->
-      <!--<h5>Column 2</h5>-->
-      <!--</div>-->
+      <div class="col-sm-12 col-md-3 my-5">
+        <h5 class="mb-3">Courses</h5>
+        <% Course.all.each do |course| %>
+            <%= link_to course.title, course %>
+            <br>
+        <% end %>
+      </div>
 
       <!--<div class="col-sm-12 col-md-3 mt-5">-->
       <!--<h5>Column 3</h5>-->
       <!--</div>-->
 
-      <!--<div class="col-sm-12 col-md-3 mt-5">-->
-      <!--<h5>Column 4</h5>-->
-      <!--</div>-->
 
     </div>
   </div>
+
+  <div class="text-center mt-5 pb-4">© <%= Date.current.year %> Nimble Labs, LLC</div>
 
 </footer>

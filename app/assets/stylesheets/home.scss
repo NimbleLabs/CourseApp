@@ -11,3 +11,42 @@
   text-align: center;
   height: 500px;
 }
+
+.unit-jumbo {
+  background: radial-gradient(circle at center, #03A9F4 0%, #007dff 40%);
+  background-color: #007dff;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  height: 300px;
+}
+
+.hero-image {
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  color: #ffffff !important;
+}
+
+footer {
+  background-color: #2E2F30;
+  color: #ffffff;
+  width: 100%;
+
+  a, a:hover {
+    color: #ffffff;
+  }
+}
+
+.lesson-content {
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  div {
+    font-size: 1.2rem;
+  }
+}

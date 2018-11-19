@@ -1,26 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container mt-3 mb-5">
 
-<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <%= link_to @lesson.unit.course.title, @lesson.unit.course, class: "breadcrumb-item" %>
+      <%= link_to @lesson.unit.title, @lesson.unit, class: "breadcrumb-item" %>
+      <li class="breadcrumb-item active" aria-current="page"><%= @lesson.title %></li>
+    </ol>
+  </nav>
 
   <h1><%= @lesson.title %></h1>
 
   <% if @lesson.video.attached? %>
 
-      <video width="800" controls>
+      <video width="100%" controls>
         <source src="<%= url_for(@lesson.video) %>" type="video/mp4">
         Your browser does not support HTML5 video.
       </video>
 
   <% end %>
 
-  <p>
-    <%= @lesson.content.html_safe %>
-  </p>
+  <% if @lesson.content.present? %>
 
-  <p>
-    <strong>Unit:</strong>
-    <%= @lesson.unit.title %>
-  </p>
+      <h1 class="mt-5">
+        Article
+      </h1>
 
-  <%= link_to 'Back to Unit', unit_path(@lesson.unit) %>
+      <hr>
+
+      <div class="lesson-content mt-5">
+        <%= @lesson.content.html_safe %>
+      </div>
+
+  <% end %>
+
 </div>
