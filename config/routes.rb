@@ -17,5 +17,8 @@ Rails.application.routes.draw do
   get 'admin', to: 'admin#index', as: 'admin'
   devise_for :users
   get 'home/index'
+  get 'privacy', to: 'home#privacy', as: 'privacy'
+  get 'terms', to: 'home#terms', as: 'terms'
+  get 'home/index'
   root to: 'home#index'
 end
