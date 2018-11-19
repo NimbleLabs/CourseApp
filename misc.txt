@@ -3,7 +3,11 @@ rails g scaffold Unit title:string description:text course:references
 rails g scaffold Lesson title:string content:text video_html:text unit:references
 
 
-<video width="400" controls>
-  <source src="mov_bbb.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
+
+AWS S3 Storage Lesson Steps:
+
+1) Install gem "aws-sdk-s3", require: false
+2) create bucket on AWS
+3) create user on AWS
+4) Update storage.yml configuration
+5) Set environment variables in Heroku
