@@ -1,29 +1,54 @@
-<div class="jumbotron jumbotron-fluid text-center home-jumbo d-flex align-items-center">
-  <div class="container">
-    <h1 class="display-4">Invest in Yourself</h1>
-    <h3>Learn to build your first app!</h3>
+<!--<div class="jumbotron jumbotron-fluid text-center home-jumbo d-flex align-items-center">-->
+<!--<div class="container">-->
+<!--<h1 class="display-4">Invest in Yourself</h1>-->
+<!--<h3>Learn to build your first app!</h3>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<div class="container-fluid mb-5">
+  <div class="container pt-5">
+    <div class="row d-flex align-items-center">
+      <div class="col-sm-12 col-md-8 text-center">
+        <h1 class="display-4">Invest in Yourself</h1>
+        <h3>Learn to build your first app!</h3>
+      </div>
+
+      <div class="col-sm-12 col-md-4">
+        <div class="text-center">Get Started For Free</div>
+
+        <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-primary my-3' do %>
+            <i class="fab fa-google"></i> &nbsp;&nbsp; Sign up with Google
+        <% end %>
+
+        <%= render 'shared/signup_form' %>
+      </div>
+
+    </div>
   </div>
 </div>
 
-<div class="container pt-5">
-  <div class="row">
+<div class="container-fluid" style="background-color: #f2f3fc;">
+  <div class="container pt-5">
+    <div class="row">
 
-    <div class="col-sm-12 offset-md-1 col-md-3 mb-5">
+      <div class="col-sm-12 offset-md-1 col-md-3 mb-5">
 
-      <% @courses.each do |course| %>
+        <% @courses.each do |course| %>
 
-          <div class="card">
-            <img class="card-img-top" src="<%= url_for(course.image) %>" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title"><%= course.title %></h5>
-              <p class="card-text"><%= course.description %></p>
-              <%= link_to 'View course', course, class: "btn btn-primary" %>
-              <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+            <div class="card">
+              <img class="card-img-top" src="<%= url_for(course.image) %>" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= course.title %></h5>
+                <p class="card-text"><%= course.description %></p>
+                <%= link_to 'View course', course, class: "btn btn-primary" %>
+                <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+              </div>
             </div>
-          </div>
 
-      <% end %>
+        <% end %>
 
+      </div>
     </div>
   </div>
 </div>

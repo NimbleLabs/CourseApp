@@ -10,6 +10,8 @@ class Lesson < ApplicationRecord
   PRO = 'pro'
   AVAILABILITY_OPTIONS = [Lesson::FREE, Lesson::SIGNUP, Lesson::PRO]
 
+  default_scope {order('index ASC')}
+
   def free?
     self.availability == Lesson::FREE
   end
@@ -20,6 +22,22 @@ class Lesson < ApplicationRecord
 
   def pro?
     self.availability == Lesson::PRO
+  end
+
+  def prev?
+    self.index > 1
+  end
+
+  def next?
+    self.index < self.unit.lessons.count
+  end
+
+  def prev
+    self.unit.lessons.where(index: self.index - 1).first
+  end
+
+  def next
+    self.unit.lessons.where(index: self.index + 1).first
   end
 
 end
