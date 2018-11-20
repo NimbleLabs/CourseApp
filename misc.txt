@@ -1,8 +1,14 @@
 
-Steps for setting up Recaptcha
+Steps for setting up SignUp/In with Google
 
-1) Add dotenv-rails and recaptcha gems
-2) Sign up for Google recaptcha
-3) Create custom DeviseController
-4) Update routes to use custom devise controller
-5) Update devise view with recaptcha tags
+1) Add gem
+2) Sign up for Google Oauth at https://console.developers.google.com
+    - Create Project
+    - Enable Google+ API
+    - Configure OAuth Consent Screen
+    - Create OAuth Credentials
+3) Configure Devise
+
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=

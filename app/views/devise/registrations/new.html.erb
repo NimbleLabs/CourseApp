@@ -1,5 +1,9 @@
 <h2>Sign up</h2>
 
+<%= link_to "Sign up with Google", user_google_oauth2_omniauth_authorize_path %>
+
+<h3>-- OR --</h3>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -22,7 +26,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-primary" %>
+    <%= invisible_recaptcha_tags text: 'Sign up', class: "btn btn-primary" %>
   </div>
 <% end %>
 
