@@ -1,26 +1,8 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-sm-12 col-md-6 offset-md-3">
-      <div class="card">
-        <div class="card-body">
 
+Steps for setting up Recaptcha
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-  layout :layout_by_resource
-
-  private
-
-  def layout_by_resource
-    if devise_controller?
-      'devise'
-    else
-      'application'
-    end
-  end
+1) Add dotenv-rails and recaptcha gems
+2) Sign up for Google recaptcha
+3) Create custom DeviseController
+4) Update routes to use custom devise controller
+5) Update devise view with recaptcha tags
