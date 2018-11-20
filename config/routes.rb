@@ -8,10 +8,7 @@ Rails.application.routes.draw do
 
   get 'courses', to: 'courses#index', as: 'courses'
   get 'course/:id', to: 'courses#show', as: 'course'
-
-  get 'units', to: 'units#index', as: 'units'
-  get 'unit/:id', to: 'units#show', as: 'unit'
-
+  get 'module/:id', to: 'units#show', as: 'unit'
   get 'lesson/:id', to: 'lessons#show', as: 'lesson'
 
   get 'admin', to: 'admin#index', as: 'admin'

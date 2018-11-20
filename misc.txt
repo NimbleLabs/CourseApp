@@ -13,13 +13,25 @@ AWS S3 Storage Lesson Steps:
 5) Set environment variables in Heroku
 
 
-.hero-image {
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  color: #ffffff !important;
-}
+https://stackoverflow.com/questions/35868756/how-to-make-bootstrap-4-cards-the-same-height-in-card-columns
 
-style="background-image: url('<%= url_for(@course.image) %>');"
+<%= select("lesson", "availability", Lesson::TYPES.each { |type| [type, type] }, {prompt: 'Select Type'}, class: 'form-control') %>
+
+<div class="container-fluid">
+
+  <div class="container pt-5">
+    <div class="row d-flex align-items-center">
+      <div class="col-sm-12 col-md-8 text-center">
+        <h1 class="display-4">Invest in Yourself</h1>
+        <h3>Learn to build your first app!</h3>
+      </div>
+
+      <div class="col-sm-12 col-md-4">
+        <%= render 'shared/sign_up_form' %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="background-color: #f2f3fc;">

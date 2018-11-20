@@ -5,9 +5,8 @@
 <table>
   <thead>
     <tr>
+      <th>Index</th>
       <th>Title</th>
-      <th>Video html</th>
-      <th>Unit</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +14,8 @@
   <tbody>
     <% @lessons.each do |lesson| %>
       <tr>
+        <td><%= lesson.index %></td>
         <td><%= lesson.title %></td>
-        <td><%= lesson.video_html %></td>
-        <td><%= lesson.unit.title %></td>
         <td><%= link_to 'Show', lesson %></td>
         <td><%= link_to 'Edit', edit_admin_lesson_path(lesson) %></td>
         <td><%= link_to 'Destroy', admin_lesson_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %></td>
