@@ -11,9 +11,9 @@
   background: radial-gradient(circle at center, #03A9F4 0%, #007dff 40%);
   background-color: #007dff;
   background-repeat: no-repeat;
-  color: #fff;
-  text-align: center;
-  height: 500px;
+  //color: #fff;
+  //text-align: center;
+  min-height: 500px;
 }
 
 .unit-jumbo {
@@ -26,7 +26,7 @@
 }
 
 .hero-image {
-  height: 500px;
+  min-height: 500px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -53,4 +53,8 @@ footer {
   div {
     font-size: 1.2rem;
   }
+}
+
+.f-md {
+  font-size: 1.25rem;
 }

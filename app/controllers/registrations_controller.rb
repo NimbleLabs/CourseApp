@@ -2,13 +2,17 @@ class RegistrationsController < Devise::RegistrationsController
   prepend_before_action :check_captcha, :configure_permitted_parameters, only: [:create]
   layout 'devise'
 
-  # def create
-  #   super
-  # end
-  #
-  # def new
-  #   super
-  # end
+  def create
+    if sign_up_params[:password_confirmation].blank?
+      sign_up_params[:password_confirmation] = sign_up_params[:password]
+    end
+
+    super
+  end
+
+  def new
+    super
+  end
 
   private
 

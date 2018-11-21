@@ -6,8 +6,8 @@
 <!--</div>-->
 
 
-<div class="container-fluid mb-5">
-  <div class="container pt-5">
+<div class="container-fluid">
+  <div class="container py-5">
     <div class="row d-flex align-items-center">
       <div class="col-sm-12 col-md-8 text-center">
         <h1 class="display-4">Invest in Yourself</h1>
@@ -15,13 +15,22 @@
       </div>
 
       <div class="col-sm-12 col-md-4">
-        <div class="text-center">Get Started For Free</div>
 
-        <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-primary my-3' do %>
-            <i class="fab fa-google"></i> &nbsp;&nbsp; Sign up with Google
-        <% end %>
+        <div class="card p-3">
 
-        <%= render 'shared/signup_form' %>
+          <div class="font-weight-bold text-center f-md">Get Started For Free</div>
+
+          <div class="text-center">
+            <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-primary btn-lg btn-block my-3' do %>
+                <i class="fab fa-google"></i> &nbsp;&nbsp; Sign up with Google
+            <% end %>
+          </div>
+
+          <h5 class="text-center">or</h5>
+
+          <%= render 'shared/signup_form' %>
+
+        </div>
       </div>
 
     </div>

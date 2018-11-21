@@ -7,13 +7,13 @@
 
 <div class="container mt-5">
 
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <%= link_to @unit.course.title, @unit.course, class: "breadcrumb-item" %>
-      <li class="breadcrumb-item active" aria-current="page"><%= @unit.title %></li>
-    </ol>
-  </nav>
+  <!--<nav aria-label="breadcrumb">-->
+    <!--<ol class="breadcrumb">-->
+      <!--<li class="breadcrumb-item"><a href="/">Home</a></li>-->
+      <!--<%= link_to @unit.course.title, @unit.course, class: "breadcrumb-item" %>-->
+      <!--<li class="breadcrumb-item active" aria-current="page"><%= @unit.title %></li>-->
+    <!--</ol>-->
+  <!--</nav>-->
 
   <h3>
     <%= @unit.description %>
@@ -37,6 +37,10 @@
 
     <% end %>
 
+  </div>
+
+  <div class="mb-3 f-md">
+    <%= link_to 'Course: ' + @unit.course.title, @unit.course %>
   </div>
 
 
