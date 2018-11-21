@@ -5,6 +5,13 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:google_oauth2]
   enum role: [:user, :owner, :admin]
 
+  validates_presence_of :full_name
+  after_create :on_after_create
+
+  def on_after_create
+    UserMailer.with(user: self).welcome_email.deliver_later
+  end
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
