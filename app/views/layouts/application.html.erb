@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <%= render 'shared/google_tag_manager' %>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +19,7 @@
 
 </head>
 <body>
-
+<%= render 'shared/gtm_body_tag' %>
 <%= render 'shared/nav_menu' %>
 
 <%= yield %>

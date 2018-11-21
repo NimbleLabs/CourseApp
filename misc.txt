@@ -2,12 +2,12 @@ rails g scaffold Course title:string description:text
 rails g scaffold Unit title:string description:text course:references
 rails g scaffold Lesson title:string content:text video_html:text unit:references
 
-Steps for Home Page Improvements
-1) New Devise Partial
-2) Devise helper functions
-3) Update home page
+Steps for Sending Email
 
-
+1) Generate mailer
+2) Add welcome_email method
+3) Update HTML message
+4) Delete message after user created
 
 https://stackoverflow.com/questions/35868756/how-to-make-bootstrap-4-cards-the-same-height-in-card-columns
 
@@ -54,3 +54,9 @@ AWS S3 Storage Lesson Steps:
 3) create user on AWS
 4) Update storage.yml configuration
 5) Set environment variables in Heroku
+
+
+Steps for Home Page Improvements
+1) New Devise Partial
+2) Devise helper functions
+3) Update home page
