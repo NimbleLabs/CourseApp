@@ -63,7 +63,7 @@ server {
   {{ if $.NOSSL_SERVER_NAME }}server_name {{ $.NOSSL_SERVER_NAME }}; {{ end }}
   access_log  /var/log/nginx/{{ $.APP }}-access.log;
   error_log   /var/log/nginx/{{ $.APP }}-error.log;
-  client_max_body_size 100M;
+  client_max_body_size 150M;
 
   ssl_certificate     {{ $.APP_SSL_PATH }}/server.crt;
   ssl_certificate_key {{ $.APP_SSL_PATH }}/server.key;
