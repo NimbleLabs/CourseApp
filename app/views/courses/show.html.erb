@@ -1,3 +1,7 @@
+<% content_for :title do %>
+    <%= @course.title %> Course
+<% end %>
+
 <div class="jumbotron jumbotron-fluid text-center hero-image d-flex align-items-center"
      style="background-image: url('<%= url_for(@course.image) %>');">
   <div class="container">
