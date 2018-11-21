@@ -1,0 +1,63 @@
+<div class="text-center mt-5">
+  <h1>Go Pro!</h1>
+</div>
+
+
+<div class="container mt-5">
+  <div class="card-deck mb-3 text-center">
+
+    <div class="card mb-4 shadow">
+      <div class="card-body">
+        <h5 class="card-title pricing-label">Free</h5>
+        <div>Get started</div>
+        <h1 class="card-title pricing-card-title mt-4">$0</h1>
+        <div style="height: 36px">
+        </div>
+        <%= link_to 'Sign Up Free', new_user_registration_path, class: 'btn btn-outline-success pricing-button mt-3' %>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Access to All Free Videos</li>
+          <li>Ability to Track Progress in Courses</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mb-4 shadow">
+      <div class="card-body">
+        <h5 class="card-title pricing-label">Pro</h5>
+        <div>Gain Deeper Insights</div>
+        <h1 class="card-title pricing-card-title mt-4">$20</h1>
+        <div class="pricing-details">
+          per month<br>
+          billed monthly
+        </div>
+        <%= link_to 'Buy Pro Monthly', pro_plan_path, class: 'btn btn-outline-primary pricing-button mt-3 primary-pricing-button'  %>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Access to All Free Videos</li>
+          <li>Ability to Track Progress in Courses</li>
+          <li>Access to all Pro Videos</li>
+          <li>Access to Private Slack Community</li>
+          <li>Priority for new Lesson Ideas</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card mb-4 shadow">
+      <div class="card-body">
+        <h5 class="card-title pricing-label"><strong>Lifetime</strong> Pro Membership</h5>
+        <div>Never stop learning!</div>
+        <h1 class="card-title pricing-card-title mt-4">$199</h1>
+        <div class="pricing-details">
+          one-time<br>
+          payment
+        </div>
+        <%= link_to 'Buy Pro Lifetime', lifetime_pro_path, class: 'btn btn-primary pricing-button mt-3' %>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Access to All Free Videos</li>
+          <li>Ability to Track Progress in Courses</li>
+          <li><strong>Lifetime</strong> Access to all Pro Videos</li>
+          <li><strong>Lifetime</strong> Access to Private Slack Community</li>
+          <li>Priority for new Lesson Ideas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

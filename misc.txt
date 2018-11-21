@@ -2,6 +2,21 @@ rails g scaffold Course title:string description:text
 rails g scaffold Unit title:string description:text course:references
 rails g scaffold Lesson title:string content:text video_html:text unit:references
 
+
+Steps for Stripe Implementation
+
+1) Add stripe gem
+2) Create plans in stripe
+3) Update ENV vars for stripe in .env for local testing and on Production server for production
+4) create pricing page
+5) generate CC model and add fields to User model
+6) create CC form page for every pricing option
+7) Implement plans controller
+8) Implement CC controller
+9) Implement CC service (most logic here)
+10) Update routes
+11  ) Test test test
+
 Steps for Sending Email
 
 1) Generate mailer
@@ -18,6 +33,8 @@ GTM_ACCOUNT_ID=
 DEFAULT_EMAIL=
 SENDGRID_USERNAME=
 SENDGRID_PASSWORD=
+
+STRIPE_PRO_PLAN=
 STRIPE_SECRET_KEY=
 STRIPE_PUBLIC_KEY=
 

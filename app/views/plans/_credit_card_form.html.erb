@@ -1,0 +1,47 @@
+<%= form_for(@credit_card, html: {class: "form-horizontal text-left", role: "form"}) do |f| %>
+    <% if @credit_card.errors.any? %>
+        <div class="alert alert-danger alert-dismissable mt-2" role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="text-white">Error with payment</h4>
+
+          <% @credit_card.errors.full_messages.each do |msg| %>
+              <div>- <%= msg %></div>
+          <% end %>
+        </div>
+    <% end %>
+
+    <input type="hidden" id="planValue" name="plan" value="<%= @plan %>"/>
+    <input type="hidden" id="userValue" name="credit_card[user_id]" value="<%= current_user.id %>"/>
+
+    <div class="form-group">
+      <label for="cardNumberInput">Card number</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-credit-card"></i></span>
+        </div>
+        <%= f.text_field :card_number, id: "cardNumberInput", class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="expiration_month">Expiration month</label>
+      <%= select_month @credit_card.exp_month, {add_month_numbers: true}, {name: 'credit_card[exp_month]', id: "expiration_month", class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+      <label for="expiration_year">Expiration year</label>
+      <%= select_year @credit_card.exp_year, {start_year: Date.today.year, end_year: Date.today.year+7}, {name: 'credit_card[exp_year]', id: "expiration_year", class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+      <label for="cvcInput">Security code</label>
+      <%= f.text_field :cvc, id: "cvcInput", class: 'form-control' %>
+    </div>
+
+    <div class="form-group pt-2">
+      <%= f.submit "Go Pro!", class: 'btn btn-primary btn-lg', style: "width: 100%;" %>
+    </div>
+
+
+<% end %>

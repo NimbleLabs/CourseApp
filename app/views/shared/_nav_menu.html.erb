@@ -32,6 +32,10 @@
 
         <% end %>
 
+        <% if !customer? %>
+            <%= link_to 'Go Pro!', pricing_path, class: 'nav-link' %>
+        <% end %>
+
       </ul>
     </div>
   </div>

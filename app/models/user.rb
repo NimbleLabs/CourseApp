@@ -4,9 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
   enum role: [:user, :owner, :admin]
-
+  has_many :credit_cards, dependent: :destroy
   validates_presence_of :full_name
   after_create :on_after_create
+
+  def customer?
+    self.stripe_customer_id.present? && (self.stripe_subscription_id.present? || self.stripe_charge_id.present?)
+  end
 
   def on_after_create
     UserMailer.with(user: self).welcome_email.deliver_later

@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get 'go-pro', to: 'home#pricing', as: 'pricing'
+
   scope module: 'admin', path: '/admin' do
     resources :courses, as: 'admin_courses'
     resources :units, as: 'admin_units'
     resources :lessons, as: 'admin_lessons'
   end
+
+  resources :credit_cards, path: '/payments'
+  get 'plans/pro', to: 'plans#pro', as: 'pro_plan'
+  get 'plans/pro-lifetime', to: 'plans#lifetime_pro', as: 'lifetime_pro'
 
   get 'courses', to: 'courses#index', as: 'courses'
   get 'course/:id', to: 'courses#show', as: 'course'

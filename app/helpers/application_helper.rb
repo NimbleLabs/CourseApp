@@ -3,6 +3,10 @@ module ApplicationHelper
     :user
   end
 
+  def customer?
+    user_signed_in? && current_user.customer?
+  end
+
   def resource
     @resource ||= User.new
   end
