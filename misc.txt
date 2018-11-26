@@ -38,6 +38,30 @@ STRIPE_PRO_PLAN=
 STRIPE_SECRET_KEY=
 STRIPE_PUBLIC_KEY=
 
+Steps for Adding Typing Animation
+1) Add typed.js to shared header elements
+2) Add strings to page
+3) Update sub-header
+4) Add script tag to call typed.js
+
+
+
+
+
+
+
+
+
+<script>
+    var typed = new Typed('#typed', {
+        stringsElement: '#typed-strings',
+        typeSpeed: 40,
+        backDelay: 1200,
+        backSpeed: 20,
+        smartBackspace: true // Default value
+    });
+</script>
+
 https://stackoverflow.com/questions/35868756/how-to-make-bootstrap-4-cards-the-same-height-in-card-columns
 
 
@@ -64,6 +88,7 @@ https://stackoverflow.com/questions/35868756/how-to-make-bootstrap-4-cards-the-s
 </div>
 
 <div class="container-fluid" style="background-color: #f2f3fc;">
+
 
 
 Steps for setting up SignUp/In with Google
