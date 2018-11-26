@@ -31,10 +31,9 @@
     <% @course.units.each do |unit| %>
 
         <div class="col-md-3 mb-5">
-          <div class="card">
+          <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title"><%= unit.title %></h5>
-              <p class="card-text"><%= unit.description %></p>
               <%= link_to 'View module', unit, class: "btn btn-primary" %>
             </div>
           </div>

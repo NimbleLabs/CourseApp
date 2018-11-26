@@ -43,26 +43,37 @@
 
 <div class="container-fluid" style="background-color: #f2f3fc;">
   <div class="container pt-5">
-    <div class="row">
 
-      <div class="col-sm-12 offset-md-1 col-md-3 mb-5">
 
-        <% @courses.each do |course| %>
+    <% @courses.each do |course| %>
+
+        <div class="row">
+
+          <div class="col-sm-12 offset-md-1 text-center col-md-4 mb-5 d-flex align-items-center course-image" style="background-image: url('<%= url_for(course.image) %>');">
+
+            <%= link_to course do %>
+                <div class="container text-white">
+                  <h5><%= course.title %></h5>
+                </div>
+            <% end %>
+
+          </div>
+
+          <div class="col-sm-12 col-md-6 mb-5">
 
             <div class="card">
-              <img class="card-img-top" src="<%= url_for(course.image) %>" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title"><%= course.title %></h5>
                 <p class="card-text"><%= course.description %></p>
                 <%= link_to 'View course', course, class: "btn btn-primary" %>
-                <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
               </div>
             </div>
 
-        <% end %>
+          </div>
+        </div>
 
-      </div>
-    </div>
+    <% end %>
+
+
   </div>
 </div>
 
