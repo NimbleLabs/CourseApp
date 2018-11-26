@@ -7,4 +7,10 @@ class Course < ApplicationRecord
 
   has_one_attached :image
   has_many :units, dependent: :destroy
+
+  def video_count
+    count = 0
+    self.units.each { |unit| count += unit.video_count }
+    count
+  end
 end

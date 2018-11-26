@@ -65,6 +65,7 @@
               <div class="card-body">
                 <p class="card-text"><%= course.description %></p>
                 <%= link_to 'View course', course, class: "btn btn-primary" %>
+                <p class="card-text mt-3 text-muted"><%= course.units.count %> modules, <%= course.video_count %> videos</p>
               </div>
             </div>
 
