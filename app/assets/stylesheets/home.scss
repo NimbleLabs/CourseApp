@@ -34,6 +34,18 @@
   color: #ffffff !important;
 }
 
+.svg-background {
+  background-attachment: scroll;
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center center;
+  /* background by SVGBackgrounds.com */
+
+  h1, h3 {
+    color: #fff;
+  }
+}
+
 footer {
   background-color: #2E2F30;
   color: #ffffff;

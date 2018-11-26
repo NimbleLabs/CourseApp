@@ -8,4 +8,8 @@ class Unit < ApplicationRecord
 
   belongs_to :course
   has_many :lessons, dependent: :destroy
+
+  def video_count
+    self.lessons.select { |lesson|  lesson.video.attached? }.count
+  end
 end
