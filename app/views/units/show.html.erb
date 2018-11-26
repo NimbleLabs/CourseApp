@@ -12,16 +12,16 @@
 <div class="container mt-5">
 
   <!--<nav aria-label="breadcrumb">-->
-    <!--<ol class="breadcrumb">-->
-      <!--<li class="breadcrumb-item"><a href="/">Home</a></li>-->
-      <!--<%= link_to @unit.course.title, @unit.course, class: "breadcrumb-item" %>-->
-      <!--<li class="breadcrumb-item active" aria-current="page"><%= @unit.title %></li>-->
-    <!--</ol>-->
+  <!--<ol class="breadcrumb">-->
+  <!--<li class="breadcrumb-item"><a href="/">Home</a></li>-->
+  <!--<%= link_to @unit.course.title, @unit.course, class: "breadcrumb-item" %>-->
+  <!--<li class="breadcrumb-item active" aria-current="page"><%= @unit.title %></li>-->
+  <!--</ol>-->
   <!--</nav>-->
 
-  <h3>
-    <%= @unit.description %>
-  </h3>
+  <div class="f-md">
+    <%= simple_format( @unit.description )%>
+  </div>
 
 
   <h1 class="my-3">Lessons</h1>
@@ -31,8 +31,19 @@
     <% @unit.lessons.each do |lesson| %>
 
         <div class="col-md-3 mb-5">
-          <div class="card">
+          <div class="card h-100">
             <div class="card-body">
+              <div class="mb-2">
+
+                <% if lesson.free? %>
+                    <span class="badge badge-success">free</span>
+                <% elsif lesson.signed_up? %>
+                    <span class="badge badge-danger">sign up</span>
+                <% elsif lesson.pro? %>
+                    <span class="badge badge-primary">pro</span>
+                <% end %>
+              </div>
+
               <h5 class="card-title"><%= lesson.title %></h5>
               <%= link_to 'View lesson', lesson, class: "btn btn-primary" %>
             </div>
