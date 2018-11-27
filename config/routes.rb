@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :photos
   scope module: 'admin', path: '/admin' do
     resources :courses, as: 'admin_courses'
     resources :units, as: 'admin_units'
