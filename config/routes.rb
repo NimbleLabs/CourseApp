@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
-
   resources :photos
->>>>>>> Unit4Lessons
   scope module: 'admin', path: '/admin' do
     resources :courses, as: 'admin_courses'
     resources :units, as: 'admin_units'
