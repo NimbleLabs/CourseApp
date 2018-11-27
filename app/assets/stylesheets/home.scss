@@ -39,6 +39,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  min-height: 300px;
   color: #ffffff !important;
 
   a, a:hover {
@@ -81,4 +82,12 @@ footer {
 
 .f-md {
   font-size: 1.25rem;
+}
+
+.light-background {
+  background-color: #f2f3fc;
+}
+
+.section {
+  min-height: 400px;
 }

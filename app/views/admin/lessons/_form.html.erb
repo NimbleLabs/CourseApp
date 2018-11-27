@@ -23,13 +23,13 @@
 
     <div class="form-group">
       <%= form.label :availability %>
-      <%= select("lesson", "availability", Lesson::AVAILABILITY_OPTIONS.each { |type| [type, type] }, {prompt: 'Select Type'}, class: 'form-control') %>
+      <%= select("lesson", "availability", Lesson::AVAILABILITY_OPTIONS.each {|type| [type, type]}, {prompt: 'Select Type'}, class: 'form-control') %>
     </div>
 
     <div class="form-group">
       <%= form.label :content %>
       <input id="lesson_content" value="<%= @lesson.content %>" type="hidden" name="lesson[content]">
-      <trix-editor input="lesson_content"></trix-editor>
+      <trix-editor class="trix-content" input="lesson_content"></trix-editor>
     </div>
 
     <div class="form-group">
@@ -56,3 +56,27 @@
       <%= form.submit 'Save', class: 'btn btn-primary' %>
     </div>
 <% end %>
+
+
+<script>
+    var element = document.querySelector("trix-editor")
+    console.log('trix editor')
+    console.log(element.editor)
+    element.editor  // is a Trix.Editor instance
+
+    addEventListener("trix-attachment-add", function (event) {
+        if (event.attachment.file) {
+            console.log('trix-attachment-add event')
+            console.log(event)
+        }
+    })
+
+    addEventListener("trix-change", function (event) {
+        console.log('trix-change event')
+        console.log(event)
+        var htmlContent = document.querySelector("trix-editor").editor.element.innerHTML
+        console.log(htmlContent)
+    })
+
+
+</script>
