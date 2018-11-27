@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_203101) do
+ActiveRecord::Schema.define(version: 2018_11_27_184758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,23 @@ ActiveRecord::Schema.define(version: 2018_11_19_203101) do
     t.index ["slug"], name: "index_courses_on_slug"
   end
 
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "name_on_card"
+    t.string "card_number"
+    t.integer "exp_month"
+    t.integer "exp_year"
+    t.string "cvc"
+    t.string "zip_code"
+    t.string "card_type"
+    t.string "stripe_id"
+    t.string "last_4_digits"
+    t.string "cvc_check"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -69,6 +86,11 @@ ActiveRecord::Schema.define(version: 2018_11_19_203101) do
     t.string "availability"
     t.index ["slug"], name: "index_lessons_on_slug"
     t.index ["unit_id"], name: "index_lessons_on_unit_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "units", force: :cascade do |t|
@@ -98,10 +120,13 @@ ActiveRecord::Schema.define(version: 2018_11_19_203101) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "full_name"
+    t.string "stripe_subscription_id"
+    t.string "stripe_charge_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "credit_cards", "users"
   add_foreign_key "lessons", "units"
   add_foreign_key "units", "courses"
 end
