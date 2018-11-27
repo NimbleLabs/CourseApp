@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'trix' %>
+
 <%= form_with(model: [:admin, lesson], local: true) do |form| %>
     <% if lesson.errors.any? %>
         <div id="error_explanation">

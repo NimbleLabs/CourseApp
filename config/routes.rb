@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   get 'go-pro', to: 'home#pricing', as: 'pricing'
+  resources :photos
 
   scope module: 'admin', path: '/admin' do
     resources :courses, as: 'admin_courses'
