@@ -89,8 +89,11 @@ ActiveRecord::Schema.define(version: 2018_11_27_184758) do
   end
 
   create_table "photos", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_photos_on_slug"
   end
 
   create_table "units", force: :cascade do |t|

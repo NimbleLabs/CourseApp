@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_admin
+  before_action :authenticate_user!, except: [:show]
+  before_action :ensure_admin, except: [:show]
 
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
