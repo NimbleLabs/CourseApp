@@ -14,7 +14,14 @@ class NimbleAnalytics {
             }
         }
 
-        $.post('/events.json', eventObject)
+        const settings = {
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(eventObject)   ,
+            dataType: "json",
+        }
+
+        $.ajax('/events.json', settings)
     }
 
     logVisitorPageView() {
@@ -29,7 +36,14 @@ class NimbleAnalytics {
             }
         }
 
-        $.post('/events.json', eventObject)
+        const settings = {
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(eventObject),
+            dataType: "json",
+        }
+
+        $.ajax('/events.json', settings)
     }
 
     getCookie(cname) {
