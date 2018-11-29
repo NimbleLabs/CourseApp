@@ -16,20 +16,54 @@
 
   <% if @lesson.free? || (@lesson.signed_up? && user_signed_in?) %>
 
-      <% if @lesson.prev? %>
-          <%= link_to 'previous lesson', @lesson.prev, class: "btn btn-primary" %>
-      <% end %>
 
-      <% if @lesson.next? %>
-          <%= link_to 'next lesson', @lesson.next, class: "btn btn-primary" %>
-      <% end %>
 
       <% if @lesson.video.attached? %>
 
-          <video width="100%" controls>
-            <source src="<%= url_for(@lesson.video) %>" type="video/mp4">
-            Your browser does not support HTML5 video.
-          </video>
+          <div class="row">
+            <div class="col-sm-12 col-md-10">
+              <video width="100%" controls>
+                <source src="<%= url_for(@lesson.video) %>" type="video/mp4">
+                Your browser does not support HTML5 video.
+              </video>
+            </div>
+            <div class="col-sm-12 col-md-2">
+
+              <% if @lesson.prev? %>
+                  <div class="card">
+                    <div class="card-body">
+                      <%= link_to @lesson.prev do %>
+                          <h5 class="card-title"><%= @lesson.prev.title %></h5>
+                          <div>previous lesson</div>
+                      <% end %>
+                    </div>
+                  </div>
+              <% end %>
+
+              <% if @lesson.next? %>
+                  <div class="card">
+                    <div class="card-body">
+                      <%= link_to @lesson.next do %>
+                          <h5 class="card-title"><%= @lesson.next.title %></h5>
+                          <div>next lesson</div>
+                      <% end %>
+                    </div>
+                  </div>
+              <% end %>
+
+            </div>
+          </div>
+
+
+      <% else %>
+
+          <% if @lesson.prev? %>
+              <%= link_to 'previous lesson', @lesson.prev, class: "btn btn-primary" %>
+          <% end %>
+
+          <% if @lesson.next? %>
+              <%= link_to 'next lesson', @lesson.next, class: "btn btn-primary" %>
+          <% end %>
 
       <% end %>
 
@@ -55,8 +89,6 @@
       <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary mt-3' %>
 
   <% end %>
-
-
 
 
 </div>
