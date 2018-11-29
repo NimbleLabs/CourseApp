@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post 'events', to: 'analytics#index', as: 'analytics', format: 'json'
+
   get 'go-pro', to: 'home#pricing', as: 'pricing'
   resources :photos
 

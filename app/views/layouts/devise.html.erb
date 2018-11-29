@@ -19,6 +19,18 @@
 
 </head>
 <body>
+<%= javascript_include_tag 'analytics' %>
+
+<% if user_signed_in? %>
+    <script>
+        AnalyticsManager.logUserPageView(<%= current_user.id %>)
+    </script>
+<% else %>
+    <script>
+        AnalyticsManager.logVisitorPageView()
+    </script>
+<% end %>
+
 <%= render 'shared/gtm_body_tag' %>
 <%= render 'shared/nav_menu' %>
 
