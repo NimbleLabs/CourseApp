@@ -10,10 +10,31 @@
   <%= @unit.description %>
 </p>
 
-<p>
-  <strong>Course:</strong>
-  <%= @unit.course.title %>
-</p>
+<h1>Lessons</h1>
 
-<%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', units_path %>
+<table class="table table-bordered table-sm">
+  <thead>
+  <tr>
+    <th>Index</th>
+    <th>Title</th>
+    <th>Has Notes?</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @unit.lessons.each do |lesson| %>
+      <tr>
+        <td><%= lesson.index %></td>
+        <td><%= link_to lesson.title, edit_admin_lesson_path(lesson) %></td>
+        <td><%= lesson.content.present? %></td>
+        <td><%= link_to 'Edit', edit_admin_lesson_path(lesson) %></td>
+        <td><%= link_to 'Destroy', admin_lesson_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Return to Unit', admin_units_path, class: 'btn btn-primary my-3' %>
+
+<%= link_to @unit.course.title, admin_course_path(@unit.course), class: 'btn btn-primary my-3' %>

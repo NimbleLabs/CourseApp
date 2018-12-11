@@ -9,6 +9,27 @@
     <%= @course.description %>
   </p>
 
-  <%= link_to 'Return to Course Listing', courses_path %>
+  <h1>Units</h1>
+
+  <table class="table table-bordered table-sm">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="2"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @course.units.each do |unit| %>
+        <tr>
+          <td><%= link_to unit.title, admin_unit_path(unit) %></td>
+          <td><%= link_to 'Edit', edit_admin_unit_path(unit) %></td>
+          <td><%= link_to 'Destroy', admin_unit_path(unit), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Return to Course Listing', admin_courses_path, class: 'btn btn-primary my-3' %>
 
 </div>
