@@ -23,11 +23,11 @@
 
 <% if user_signed_in? %>
     <script>
-        AnalyticsManager.logUserPageView(<%= current_user.id %>)
+        NimbleAnalytics.logUserPageView(<%= current_user.id %>)
     </script>
 <% else %>
     <script>
-        AnalyticsManager.logVisitorPageView()
+        NimbleAnalytics.logVisitorPageView()
     </script>
 <% end %>
 

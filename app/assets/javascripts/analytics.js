@@ -1,20 +1,25 @@
-class NimbleAnalytics {
-    constructor(site, path) {
-        this.site = site
-        this.path = path
-    }
+var NimbleAnalytics = {
+    // constructor(site, path) {
+    //     this.site = site
+    //     this.path = path
+    //     this.userId = null
+    //     this.logClickEvents()
+    // }
 
-    logUserPageView( userId ) {
+    userId: null,
+
+    logUserPageView: function( userId ) {
+        this.userId = userId
         var eventObject = {
             event: {
-                site: this.site,
-                page: this.path,
+                site: window.location.hostname,
+                page: window.location.pathname,
                 user_id: userId,
                 date: new Date()
             }
         }
 
-        const settings = {
+        var settings = {
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(eventObject)   ,
@@ -22,21 +27,21 @@ class NimbleAnalytics {
         }
 
         $.ajax('/events.json', settings)
-    }
+    },
 
-    logVisitorPageView() {
-        const visitorId = this.getCookie('nhq_vid')
+    logVisitorPageView: function() {
+        var visitorId = this.getCookie('nhq_vid')
 
         var eventObject = {
             event: {
-                site: this.site,
-                page: this.path,
+                site: window.location.hostname,
+                page: window.location.pathname,
                 visitor_id: visitorId,
                 date: new Date()
             }
         }
 
-        const settings = {
+        var settings = {
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(eventObject),
@@ -44,9 +49,9 @@ class NimbleAnalytics {
         }
 
         $.ajax('/events.json', settings)
-    }
+    },
 
-    getCookie(cname) {
+    getCookie: function(cname) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(';');
@@ -63,5 +68,5 @@ class NimbleAnalytics {
     }
 }
 
-const AnalyticsManager = new NimbleAnalytics(window.location.hostname, window.location.pathname)
-window.AnalyticsManager = AnalyticsManager
+//window.AnalyticsManager = new NimbleAnalytics(window.location.hostname, window.location.pathname)
+window.NimbleAnalytics = NimbleAnalytics

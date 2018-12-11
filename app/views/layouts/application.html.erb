@@ -15,17 +15,23 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'home', media: 'all' %>
 
+  <script>
+      document.addEventListener("click", (event) => {
+          console.log(event);
+      });
+  </script>
+
 </head>
 <body>
 <%= javascript_include_tag 'analytics' %>
 
 <% if user_signed_in? %>
     <script>
-        AnalyticsManager.logUserPageView(<%= current_user.id %>)
+        NimbleAnalytics.logUserPageView(<%= current_user.id %>)
     </script>
 <% else %>
     <script>
-        AnalyticsManager.logVisitorPageView()
+        NimbleAnalytics.logVisitorPageView()
     </script>
 <% end %>
 
