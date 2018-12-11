@@ -2,23 +2,20 @@
 
 <h1>Units</h1>
 
-<table>
+<table class="table table-bordered table-sm">
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Course</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @units.each do |unit| %>
       <tr>
-        <td><%= unit.title %></td>
-        <td><%= unit.description %></td>
+        <td><%= link_to unit.title, admin_unit_path(unit) %></td>
         <td><%= unit.course.title %></td>
-        <td><%= link_to 'Show', unit %></td>
         <td><%= link_to 'Edit', edit_admin_unit_path(unit) %></td>
         <td><%= link_to 'Destroy', admin_unit_path(unit), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -28,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Unit', new_admin_unit_path %>
+<%= link_to 'New Unit', new_admin_unit_path, class: 'btn btn-primary my-3' %>

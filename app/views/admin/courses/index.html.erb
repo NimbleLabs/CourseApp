@@ -1,29 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container mt-5">
+<h1>Courses</h1>
 
-  <h1>Courses</h1>
+<table class="table table-bordered table-sm">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
 
-  <div class="row">
-
-    <% @courses.each do |course| %>
-
-        <div class="col-md-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><%= course.title %></h5>
-              <p class="card-text"><%= course.description %></p>
-              <%= link_to 'Edit course', edit_admin_course_path(course), class: "btn btn-primary" %>
-              <%= link_to 'Delete', admin_course_path(course), method: :delete, class: "btn btn-danger" %>
-            </div>
-          </div>
-        </div>
-
-    <% end %>
-
-  </div>
-</div>
+  <tbody>
+  <% @courses.each do |course| %>
+      <tr>
+        <td><%= link_to course.title, admin_course_path(course) %></td>
+        <td><%= link_to 'Edit', edit_admin_course_path(course) %></td>
+        <td><%= link_to 'Destroy', admin_course_path(course), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <br>
 
-<%= link_to 'New Course', new_admin_course_path %>
+<%= link_to 'New Course', new_admin_course_path, class: 'btn btn-primary my-3' %>
