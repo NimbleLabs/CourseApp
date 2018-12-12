@@ -1,34 +1,16 @@
-<h2>Sign up</h2>
-
-<%= link_to "Sign up with Google", user_google_oauth2_omniauth_authorize_path %>
-
-<h3>-- OR --</h3>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
-  </div>
-
-  <div class="actions">
-    <%= invisible_recaptcha_tags text: 'Sign up', class: "btn btn-primary" %>
-  </div>
+<% content_for :title do %>
+    Sign up for free at NimbleHQ
 <% end %>
+
+<div class="font-weight-bold text-center f-md">Get Started For Free</div>
+
+<%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-primary btn-lg btn-block my-3' do %>
+    <i class="fab fa-google"></i> &nbsp;&nbsp; Sign up with Google
+<% end %>
+
+<h5 class="text-center">or</h5>
+
+<%= render 'shared/signup_form' %>
 
 <br>
 <%= render "devise/shared/links" %>

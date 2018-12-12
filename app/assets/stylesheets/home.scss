@@ -2,12 +2,97 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.btn {
+  border-radius: 2rem !important;
+  min-width: 150px;
+}
 
 .home-jumbo {
   background: radial-gradient(circle at center, #03A9F4 0%, #007dff 40%);
   background-color: #007dff;
   background-repeat: no-repeat;
+  //color: #fff;
+  //text-align: center;
+  min-height: 500px;
+}
+
+.unit-jumbo {
+  background: radial-gradient(circle at center, #03A9F4 0%, #007dff 40%);
+  background-color: #007dff;
+  background-repeat: no-repeat;
   color: #fff;
   text-align: center;
-  height: 500px;
+  height: 300px;
+}
+
+.hero-image {
+  min-height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  color: #ffffff !important;
+}
+
+.course-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  min-height: 300px;
+  color: #ffffff !important;
+
+  a, a:hover {
+    color: #ffffff;
+  }
+}
+
+.svg-background {
+  background-attachment: scroll;
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center center;
+  /* background by SVGBackgrounds.com */
+
+  h1, h3 {
+    color: #fff;
+  }
+}
+
+footer {
+  background-color: #2E2F30;
+  color: #ffffff;
+  width: 100%;
+
+  a, a:hover {
+    color: #ffffff;
+  }
+}
+
+.lesson-content {
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  div {
+    font-size: 1.2rem;
+  }
+
+  img {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+.f-md {
+  font-size: 1.25rem;
+}
+
+.light-background {
+  background-color: #f2f3fc;
+}
+
+.section {
+  min-height: 400px;
 }
