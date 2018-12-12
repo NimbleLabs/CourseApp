@@ -35,6 +35,8 @@ gem 'omniauth-google-oauth2'
 gem 'stripe'
 gem 'redis'
 gem 'sidekiq'
+gem 'ahoy_matey'
+gem 'mongo'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
