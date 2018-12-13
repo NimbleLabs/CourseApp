@@ -12,7 +12,7 @@ function getEventObject() {
     }
 }
 
-if (videoElements && videoElements[0]) {
+if (videoElements && videoElements[0] && (NIMBLE_HQ_USER_ID === null || !IS_USER_ADMIN)) {
     var eventObject = getEventObject()
 
     var v = videoElements[0]

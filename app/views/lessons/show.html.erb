@@ -95,9 +95,11 @@
 <script>
     var NIMBLE_HQ_LESSON_ID = <%= @lesson.id %>
     var NIMBLE_HQ_USER_ID = null
+    var IS_USER_ADMIN = false
 
     <% if user_signed_in? %>
     NIMBLE_HQ_USER_ID = <%= current_user.id %>
+    IS_USER_ADMIN = <%= current_user.admin? %>
     <% end %>
 </script>
 

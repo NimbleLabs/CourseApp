@@ -10,6 +10,11 @@ class Mongo::MongoService
     @collection.find({})
   end
 
+  # use with caution
+  def clear
+    client['ahoy_visits'].drop
+    client['ahoy_events'].drop
+  end
 
   def client
     return @client if @client.present?
