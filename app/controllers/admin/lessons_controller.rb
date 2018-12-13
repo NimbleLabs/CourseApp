@@ -1,4 +1,5 @@
 class Admin::LessonsController < ApplicationController
+  skip_before_action :track_ahoy_visit
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
 
   before_action :authenticate_user!

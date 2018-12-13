@@ -1,0 +1,7 @@
+Lesson 2
+
+Include attachments
+Move to Admin
+  - Copy controller
+  - Update routes
+Use Trixy Rich Text Editor

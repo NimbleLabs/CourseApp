@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'go-pro', to: 'home#pricing', as: 'pricing'
   resources :photos
 
@@ -7,10 +8,11 @@ Rails.application.routes.draw do
     resources :courses, as: 'admin_courses'
     resources :units, as: 'admin_units'
     resources :lessons, as: 'admin_lessons'
+    resources :posts, as: 'admin_posts'
 
-    authenticate :user, lambda {|u| u.admin?} do
-      mount Sidekiq::Web => '/sidekiq'
-    end
+    # authenticate :user, lambda {|u| u.admin?} do
+    #   mount Sidekiq::Web => '/sidekiq'
+    # end
   end
 
   resources :credit_cards, path: '/payments'
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
   get 'course/:id', to: 'courses#show', as: 'course'
   get 'module/:id', to: 'units#show', as: 'unit'
   get 'lesson/:id', to: 'lessons#show', as: 'lesson'
+  get 'posts', to: 'posts#index', as: 'posts'
+  get 'posts/:id', to: 'posts#show', as: 'post'
 
   get 'admin', to: 'admin#index', as: 'admin'
   devise_for :users, :path_names => {:sign_in => 'signin', :sign_up => 'register', :sign_out => 'logout'},

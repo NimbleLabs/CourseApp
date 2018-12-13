@@ -1,0 +1,43 @@
+<%= form_with(model: [:admin, post], local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content %>
+      <input id="post_content" value="<%= post.content %>" type="hidden" name="post[content]">
+      <trix-editor class="trix-content" input="post_content"></trix-editor>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :video %>
+      <%= form.file_field :video, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :image %>
+      <%= form.file_field :image, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :video_html %>
+      <%= form.text_area :video_html, class: 'form-control' %>
+    </div>
+
+  <div class="actions">
+    <%= form.submit 'Save', class: 'btn btn-primary' %>
+  </div>
+<% end %>

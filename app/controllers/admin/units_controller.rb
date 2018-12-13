@@ -1,4 +1,5 @@
 class Admin::UnitsController < ApplicationController
+  skip_before_action :track_ahoy_visit
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :ensure_admin

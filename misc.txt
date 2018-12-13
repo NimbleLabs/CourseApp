@@ -3,6 +3,8 @@ rails g scaffold Unit title:string description:text course:references
 rails g scaffold Lesson title:string content:text video_html:text unit:references
 
 
+rails g scaffold Post title:string content:text video_html:text
+
 Steps for Stripe Implementation
 
 1) Add stripe gem
@@ -15,7 +17,7 @@ Steps for Stripe Implementation
 8) Implement CC controller
 9) Implement CC service (most logic here)
 10) Update routes
-11  ) Test test test
+11) Test test test
 
 Steps for Sending Email
 
@@ -50,44 +52,19 @@ Steps for Adding Typing Animation
 
 
 
+Unit 9 Lesson 1
 
+Run: rails g scaffold Lesson title:string content:text video_html:text unit:references
+Update Migration to include slug
+Update model to include Friendly ID
 
-<script>
-    var typed = new Typed('#typed', {
-        stringsElement: '#typed-strings',
-        typeSpeed: 40,
-        backDelay: 1200,
-        backSpeed: 20,
-        smartBackspace: true // Default value
-    });
-</script>
+Lesson 2
 
-https://stackoverflow.com/questions/35868756/how-to-make-bootstrap-4-cards-the-same-height-in-card-columns
-
-
-<%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-primary' do %>
-  <i class="fab fa-google"></i> Sign up with Google
-<% end %>
-
-
-<div class="container-fluid">
-
-  <div class="container pt-5">
-    <div class="row d-flex align-items-center">
-      <div class="col-sm-12 col-md-8 text-center">
-        <h1 class="display-4">Invest in Yourself</h1>
-        <h3>Learn to build your first app!</h3>
-      </div>
-
-      <div class="col-sm-12 col-md-4">
-        <%= render 'shared/sign_up_form' %>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid" style="background-color: #f2f3fc;">
+Move to Admin
+  - Copy controller
+  - Update routes
+Use Trixy Rich Text Editor
+Include video attachment
 
 
 
