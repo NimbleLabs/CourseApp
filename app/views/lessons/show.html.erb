@@ -94,6 +94,11 @@
 
 <script>
     var NIMBLE_HQ_LESSON_ID = <%= @lesson.id %>
+    var NIMBLE_HQ_USER_ID = null
+
+    <% if user_signed_in? %>
+    NIMBLE_HQ_USER_ID = <%= current_user.id %>
+    <% end %>
 </script>
 
 <%= javascript_include_tag 'lesson' %>

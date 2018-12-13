@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :courses, as: 'admin_courses'
     resources :units, as: 'admin_units'
     resources :lessons, as: 'admin_lessons'
+
+    authenticate :user, lambda {|u| u.admin?} do
+      mount Sidekiq::Web => '/sidekiq'
+    end
   end
 
   resources :credit_cards, path: '/payments'
