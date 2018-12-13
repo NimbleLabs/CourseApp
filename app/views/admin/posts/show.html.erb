@@ -1,19 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+  Published? <%= @post.published %>
 </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+<h2><%= @post.title %></h2>
 
-<p>
-  <strong>Video html:</strong>
-  <%= @post.video_html %>
-</p>
+<div>
+  <%= @post.content.html_safe %>
+</div>
+
 
 <%= link_to 'Edit', edit_admin_post_path(@post) %> |
 <%= link_to 'Back', admin_posts_path %>

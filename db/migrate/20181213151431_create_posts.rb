@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :content
       t.text :video_html
+      t.boolean :published, default: false
       t.string :slug, index: true, unique: true
       t.timestamps
     end

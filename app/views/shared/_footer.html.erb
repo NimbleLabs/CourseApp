@@ -30,7 +30,7 @@
 
       <div class="col-sm-12 col-md-3 my-5">
         <h5 class="mb-3">Latest Posts</h5>
-        <% Post.all.each do |post| %>
+        <% Post.where(published: true).each do |post| %>
             <%= link_to post.title, post %>
             <br>
         <% end %>

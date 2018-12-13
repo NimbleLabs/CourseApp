@@ -16,6 +16,13 @@
       <%= form.text_field :title, class: 'form-control' %>
     </div>
 
+    <div class="form-check my-1">
+      <%= form.check_box :published, id: :post_publish, class: 'form-check-input' %>
+      <label class="form-check-label" for="post_publish">
+        Publish?
+      </label>
+    </div>
+
     <div class="form-group">
       <%= form.label :content %>
       <input id="post_content" value="<%= post.content %>" type="hidden" name="post[content]">

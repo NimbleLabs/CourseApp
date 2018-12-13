@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2018_12_13_151431) do
     t.string "title"
     t.text "content"
     t.text "video_html"
+    t.boolean "published", default: false
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
