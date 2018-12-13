@@ -7,14 +7,15 @@ class Ahoy::Store < Ahoy::BaseStore
   end
 
   def track_event(data)
-    if data[:properties].present?
-      data.merge!(data[:properties])
-      data.delete(:properties)
-    end
 
     if data[:user_id].present?
       @user = User.find(data[:user_id])
       return if @user.present? && @user.admin?
+    end
+
+    if data[:properties].present?
+      data.merge!(data[:properties])
+      data.delete(:properties)
     end
 
     post("ahoy_events", data)
