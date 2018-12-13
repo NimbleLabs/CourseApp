@@ -12,6 +12,11 @@ class Ahoy::Store < Ahoy::BaseStore
       data.delete(:properties)
     end
 
+    if data[:user_id].present?
+      @user = User.find(data[:user_id])
+      return if @user.present? && @user.admin?
+    end
+
     post("ahoy_events", data)
   end
 
@@ -28,7 +33,6 @@ class Ahoy::Store < Ahoy::BaseStore
   def post(collection_name, data)
     @collection = client[collection_name]
     @collection.insert_one(data)
-    puts 'Collection count: ' + @collection.count.to_s
   end
 
   def client
@@ -46,10 +50,6 @@ class Ahoy::Store < Ahoy::BaseStore
       @client = Mongo::Client.new(ENV['MONGO_URL'], options)
     end
 
-
-    # @collection = @client['ahoy_events']
-    # @collection.drop
-    # @client
   end
 end
 
