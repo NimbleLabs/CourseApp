@@ -25,7 +25,7 @@
           <div class="font-weight-bold text-center f-md">Get Started For Free</div>
 
           <div class="text-center">
-            <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-primary btn-lg btn-block my-3' do %>
+            <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn rounded-btn btn-primary btn-lg btn-block my-3' do %>
                 <i class="fab fa-google"></i> &nbsp;&nbsp; Sign up with Google
             <% end %>
           </div>
@@ -181,7 +181,7 @@
           <div class="card-body">
             <h5 class="card-title"><strong><%= course.title %></strong></h5>
             <p class="card-text f-md"><%= course.description %></p>
-            <%= link_to 'View course', course, class: "btn btn-primary" %>
+            <%= link_to 'View course', course, class: "btn btn-primary rounded-btn" %>
             <p class="card-text mt-3 text-muted "><%= course.units.count %> modules, <%= course.video_count %>
               videos</p>
           </div>
