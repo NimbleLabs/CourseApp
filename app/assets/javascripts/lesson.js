@@ -16,9 +16,9 @@ if (videoElements && videoElements[0] && (NIMBLE_HQ_USER_ID === null || !IS_USER
     var eventObject = getEventObject()
 
     var v = videoElements[0]
-    v.addEventListener("seeked", function (event) {
-        ahoy.track("$seeked", eventObject);
-    }, true);
+    // v.addEventListener("seeked", function (event) {
+    //     ahoy.track("$seeked", eventObject);
+    // }, true);
 
     v.addEventListener("ended", function (event) {
         ahoy.track("$ended", eventObject);

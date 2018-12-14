@@ -16,13 +16,11 @@
 
   <% if @lesson.free? || (@lesson.signed_up? && user_signed_in?) %>
 
-
-
       <% if @lesson.video.attached? %>
 
           <div class="row">
             <div class="col-sm-12 col-md-10">
-              <video width="100%" controls>
+              <video class="video-js vjs-fluid" data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>
                 <source src="<%= url_for(@lesson.video) %>" type="video/mp4">
                 Your browser does not support HTML5 video.
               </video>
@@ -58,11 +56,11 @@
       <% else %>
 
           <% if @lesson.prev? %>
-              <%= link_to 'previous lesson', @lesson.prev, class: "btn btn-primary" %>
+              <%= link_to 'previous lesson', @lesson.prev, class: "btn btn-primary rounded-btn" %>
           <% end %>
 
           <% if @lesson.next? %>
-              <%= link_to 'next lesson', @lesson.next, class: "btn btn-primary" %>
+              <%= link_to 'next lesson', @lesson.next, class: "btn btn-primary rounded-btn" %>
           <% end %>
 
       <% end %>
@@ -86,7 +84,7 @@
         This lesson requires you to sign up!!
       </h3>
 
-      <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary mt-3' %>
+      <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary rounded-btn mt-3' %>
 
   <% end %>
 
@@ -104,3 +102,4 @@
 </script>
 
 <%= javascript_include_tag 'lesson' %>
+<script src="https://vjs.zencdn.net/7.3.0/video.js"></script>
