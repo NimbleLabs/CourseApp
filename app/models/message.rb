@@ -15,6 +15,15 @@
 class Message < ApplicationRecord
   belongs_to :conversation
 
+  validates_presence_of :conversation_id
+
+  after_create_commit do
+    if Rails.env.development?
+      channel_name = "conversations_#{conversation_id}_channel"
+      ActionCable.server.broadcast channel_name, type: 'chat', message: self
+    end
+  end
+
   def from
     return 'Visitor' if visitor_id.present?
     user = User.find(user_id )

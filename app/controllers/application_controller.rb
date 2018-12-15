@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   def print_visit
     puts '---------------------------------'
     puts current_visit.inspect
+    puts 'Visitor id cookie: ' + cookies[:ahoy_visitor]
     puts '---------------------------------'
   end
 

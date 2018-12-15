@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  before_action :set_conversation, only: [:send_message]
+  before_action :set_conversation, only: [:send_message, :messages]
 
   # POST /conversations
   # POST /conversations.json
@@ -10,7 +10,13 @@ class ConversationsController < ApplicationController
     if user_signed_in?
       @conversation.user_id = current_user.id
     else
-      @conversation.visitor_id = current_visit.visitor_id
+
+      if current_visit.blank?
+        @conversation.visitor_id = cookies[:ahoy_visitor]
+      else
+        @conversation.visitor_id = current_visit.visitor_id
+      end
+
     end
 
     if @conversation.save
@@ -25,13 +31,16 @@ class ConversationsController < ApplicationController
 
   def send_message
     if user_signed_in?
-      participant = @conversation.participant_from_user(current_user)
+      @message = @conversation.message_from_user(current_user, params[:message])
     else
-      participant = @conversation.participant_from_visit(current_visit)
+      @message = @conversation.message_from_visitor(current_visit, params[:message])
     end
 
-    @message = Message.create(conversation: @conversation, status: 'created', conversation_participant: participant, body: params[:message])
     render json: @message, status: :created
+  end
+
+  def messages
+    render json: @conversation.messages
   end
 
   private

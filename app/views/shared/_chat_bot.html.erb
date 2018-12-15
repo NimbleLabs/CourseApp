@@ -2,20 +2,19 @@
 
   <div class="chat-popup card text-white bg-primary" v-if="chatOpen">
     <div class="card-header">NimbleHQ</div>
-    <div class="card-body text-dark bg-light">
+    <div id="messageContainer" class="card-body text-dark bg-light chat-messages">
 
-      <div class="alert alert-primary chat-message" role="alert">
-        Oh hey... yeah... just checking out your site.
+      <div v-for="message in messages" class="alert chat-message" :class="getMessageClass(message)" role="alert">
+        {{message.body}}
       </div>
 
-      <div class="alert alert-secondary chat-message" role="alert">
-        Sounds good!  Let me know if you have any questions!
-      </div>
     </div>
     <div class="card-footer text-dark bg-light d-flex flex-row">
       <textarea v-model="message" class="form-control" id="messageInput" rows="2" placeholder="Ask a question"></textarea>
       <button @click="onSendClick" class="btn rounded-circle send-button bg-primary text-white ml-2">
-        <svg aria-hidden="true" data-prefix="fas" data-icon="paper-plane" class="svg-inline--fa fa-paper-plane fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg>
+        <svg aria-hidden="true" data-prefix="fas" data-icon="paper-plane" class="svg-inline--fa fa-paper-plane fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path>
+        </svg>
       </button>
     </div>
   </div>
@@ -45,14 +44,40 @@
             showBotMessage: false,
             chatOpen: false,
             conversationId: null,
-            message: ''
+            participantId: null,
+            messages: [],
+            message: '',
+            conversationChannel: null,
+            scrollComplete: false
+        },
+
+        watch: {
+            conversationId: function (newConversationId, oldConversationId) {
+                if (oldConversationId === null && newConversationId !== null) {
+                    this.initApp()
+                }
+            },
+            chatOpen: function () {
+                if (this.chatOpen && !this.scrollComplete) {
+
+                    Vue.nextTick(() => {
+                        var messageContainer = document.getElementById("messageContainer");
+                        messageContainer.scrollTop = messageContainer.scrollHeight;
+                        this.scrollComplete = true
+                    })
+                }
+            }
         },
 
         mounted() {
             console.log('NIMBLE_HQ_C_ID: ' + NIMBLE_HQ_C_ID)
 
-            if(NIMBLE_HQ_C_ID !== null) {
+            if (NIMBLE_HQ_C_ID !== null) {
                 this.conversationId = NIMBLE_HQ_C_ID
+            }
+
+            if (NIMBLE_HQ_U_ID !== null) {
+                this.participantId = NIMBLE_HQ_U_ID
             }
 
             setTimeout(() => {
@@ -63,7 +88,7 @@
         methods: {
             onSendClick() {
 
-                if(this.conversationId === null) {
+                if (this.conversationId === null) {
                     this.createConversation()
                     return
                 }
@@ -74,14 +99,13 @@
                 var settings = {
                     method: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify(request)   ,
+                    data: JSON.stringify(request),
                     dataType: "json",
                     success: (data, textStatus) => {
                         console.log('Send success')
                         console.log(data)
-                        console.log('Status: '  + textStatus)
+                        console.log('Status: ' + textStatus)
                         this.message = ''
-                        this.conversationId = data.conversation_id
                     }
                 }
 
@@ -99,7 +123,7 @@
                 var settings = {
                     method: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify(request)   ,
+                    data: JSON.stringify(request),
                     dataType: "json",
                     beforeSend: (request) => {
                         request.setRequestHeader("X-CSRF-Token", Rails.csrfToken());
@@ -107,13 +131,55 @@
                     success: (data, textStatus) => {
                         console.log('Create success')
                         console.log(data)
-                        console.log('Status: '  + textStatus)
+                        console.log('Status: ' + textStatus)
                         this.conversationId = data.conversation_id
+
+                        if (data.visitor_id) {
+                            this.participantId = data.visitor_id
+                        }
+                        else {
+                            this.participantId = data.user_id
+                        }
+
                         this.message = ''
                     }
                 }
 
                 $.ajax('/conversations.json', settings)
+            },
+
+            initApp() {
+                this.loadMessages()
+                console.log('initApp, this.conversationId: ' + this.conversationId)
+                this.conversationChannel = App.cable.subscriptions.create({
+                    channel: "ConversationChannel",
+                    conversation_id: this.conversationId
+                }, {
+                    received: (data) => {
+                        console.log('received data')
+                        console.log(data)
+
+                        if (data['type'] === 'chat') {
+                            this.messages.push(data['message']);
+                        }
+                    }
+                })
+            },
+
+            loadMessages() {
+                $.get('/messages/' + this.conversationId + '.json', (data) => {
+                    console.log('messages')
+                    console.log(data)
+                    this.messages = data
+                }, "json");
+            },
+
+            getMessageClass(message) {
+                if(message.visitor_id === this.participantId || message.user_id === this.participantId) {
+                    return 'alert-primary'
+                }
+
+                return 'alert-secondary'
             }
         }
     })

@@ -14,7 +14,7 @@
 class Conversation < ApplicationRecord
   has_many :messages
 
-  validates_uniqueness_of :user_id
+  validates_uniqueness_of :user_id, scope: :visitor_id
   validates_uniqueness_of :visitor_id
 
   before_create :on_before_create
@@ -29,6 +29,10 @@ class Conversation < ApplicationRecord
     visitor_id.present? ? 'Visitor' : 'User'
   end
 
+  def participant_id
+    visitor_id.present? ? visitor_id : user_id
+  end
+
   def new_message(message)
     if user_id.present?
       return Message.create(conversation: self, status: 'created', user_id: user_id, body: message)
@@ -41,11 +45,15 @@ class Conversation < ApplicationRecord
     Message.create(conversation: self, status: 'created', user_id: user.id, body: message)
   end
 
+  def message_from_visitor(visit, message)
+    Message.create(conversation: self, status: 'created', visitor_id: visit.visitor_id, body: message)
+  end
+
   def self.from_user(user)
     where(user_id: user.id).first
   end
 
-  def self.from_visit(visit)
-    where(visitor_id: visit.visitor_id).first
+  def self.from_visit(visitor_id)
+    where(visitor_id: visitor_id).first
   end
 end

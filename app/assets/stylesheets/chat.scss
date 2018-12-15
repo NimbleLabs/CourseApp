@@ -31,6 +31,10 @@
   /*opacity: 1 !important;*/
 }
 
+.chat-messages {
+  overflow-y: auto;
+}
+
 .start-conversation {
   right: calc(20px + 80px);
   bottom: 20px;

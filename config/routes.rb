@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-
   post 'conversations', to: 'conversations#create'
   post 'message/:id', to: 'conversations#send_message'
+  get 'messages/:id', to: 'conversations#messages'
 
   get 'go-pro', to: 'home#pricing', as: 'pricing'
   resources :photos
