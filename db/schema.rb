@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_13_151431) do
+ActiveRecord::Schema.define(version: 2018_12_15_135247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,53 @@ ActiveRecord::Schema.define(version: 2018_12_13_151431) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "ahoy_events", force: :cascade do |t|
+    t.bigint "visit_id"
+    t.bigint "user_id"
+    t.string "name"
+    t.jsonb "properties"
+    t.datetime "time"
+    t.index ["user_id"], name: "index_ahoy_events_on_user_id"
+    t.index ["visit_id"], name: "index_ahoy_events_on_visit_id"
+  end
+
+  create_table "ahoy_visits", force: :cascade do |t|
+    t.string "visit_token"
+    t.string "visitor_token"
+    t.bigint "user_id"
+    t.string "ip"
+    t.text "user_agent"
+    t.text "referrer"
+    t.string "referring_domain"
+    t.text "landing_page"
+    t.string "browser"
+    t.string "os"
+    t.string "device_type"
+    t.string "country"
+    t.string "region"
+    t.string "city"
+    t.string "utm_source"
+    t.string "utm_medium"
+    t.string "utm_term"
+    t.string "utm_content"
+    t.string "utm_campaign"
+    t.datetime "started_at"
+    t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
+    t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.string "status"
+    t.string "uuid"
+    t.integer "user_id"
+    t.string "visitor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_conversations_on_user_id"
+    t.index ["uuid"], name: "index_conversations_on_uuid"
+    t.index ["visitor_id"], name: "index_conversations_on_visitor_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -86,6 +133,19 @@ ActiveRecord::Schema.define(version: 2018_12_13_151431) do
     t.string "availability"
     t.index ["slug"], name: "index_lessons_on_slug"
     t.index ["unit_id"], name: "index_lessons_on_unit_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.string "status"
+    t.bigint "conversation_id"
+    t.integer "user_id"
+    t.string "visitor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["visitor_id"], name: "index_messages_on_visitor_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -143,5 +203,6 @@ ActiveRecord::Schema.define(version: 2018_12_13_151431) do
 
   add_foreign_key "credit_cards", "users"
   add_foreign_key "lessons", "units"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "units", "courses"
 end

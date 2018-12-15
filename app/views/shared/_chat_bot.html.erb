@@ -1,5 +1,5 @@
 <div id="chatbot">
-  
+
   <div class="chat-popup card text-white bg-primary" v-if="chatOpen">
     <div class="card-header">NimbleHQ</div>
     <div class="card-body text-dark bg-light">
@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="card-footer text-dark bg-light d-flex flex-row">
-      <textarea class="form-control" id="messageInput" rows="2" placeholder="Ask a question"></textarea>
-      <button class="btn rounded-circle send-button bg-primary text-white ml-2">
+      <textarea v-model="message" class="form-control" id="messageInput" rows="2" placeholder="Ask a question"></textarea>
+      <button @click="onSendClick" class="btn rounded-circle send-button bg-primary text-white ml-2">
         <svg aria-hidden="true" data-prefix="fas" data-icon="paper-plane" class="svg-inline--fa fa-paper-plane fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg>
       </button>
     </div>
@@ -43,15 +43,78 @@
         el: '#chatbot',
         data: {
             showBotMessage: false,
-            chatOpen: false
+            chatOpen: false,
+            conversationId: null,
+            message: ''
         },
 
         mounted() {
+            console.log('NIMBLE_HQ_C_ID: ' + NIMBLE_HQ_C_ID)
+
+            if(NIMBLE_HQ_C_ID !== null) {
+                this.conversationId = NIMBLE_HQ_C_ID
+            }
 
             setTimeout(() => {
                 this.showBotMessage = true
             }, 3000)
 
+        },
+        methods: {
+            onSendClick() {
+
+                if(this.conversationId === null) {
+                    this.createConversation()
+                    return
+                }
+
+                var request = {
+                    message: this.message
+                }
+                var settings = {
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(request)   ,
+                    dataType: "json",
+                    success: (data, textStatus) => {
+                        console.log('Send success')
+                        console.log(data)
+                        console.log('Status: '  + textStatus)
+                        this.message = ''
+                        this.conversationId = data.conversation_id
+                    }
+                }
+
+                $.ajax('/message/' + this.conversationId + '.json', settings)
+            },
+
+            createConversation() {
+
+                var request = {
+                    conversation: {
+                        status: 'new'
+                    },
+                    message: this.message
+                }
+                var settings = {
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(request)   ,
+                    dataType: "json",
+                    beforeSend: (request) => {
+                        request.setRequestHeader("X-CSRF-Token", Rails.csrfToken());
+                    },
+                    success: (data, textStatus) => {
+                        console.log('Create success')
+                        console.log(data)
+                        console.log('Status: '  + textStatus)
+                        this.conversationId = data.conversation_id
+                        this.message = ''
+                    }
+                }
+
+                $.ajax('/conversations.json', settings)
+            }
         }
     })
 </script>

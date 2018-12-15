@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  post 'conversations', to: 'conversations#create'
+  post 'message/:id', to: 'conversations#send_message'
+
   get 'go-pro', to: 'home#pricing', as: 'pricing'
   resources :photos
 
@@ -9,6 +12,8 @@ Rails.application.routes.draw do
     resources :units, as: 'admin_units'
     resources :lessons, as: 'admin_lessons'
     resources :posts, as: 'admin_posts'
+    resources :conversations, as: 'admin_conversations'
+    post 'message/:id', to: 'conversations#send_message'
 
     # authenticate :user, lambda {|u| u.admin?} do
     #   mount Sidekiq::Web => '/sidekiq'

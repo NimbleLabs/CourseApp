@@ -23,6 +23,7 @@
   <table class="table table-striped table-sm">
     <thead>
     <tr>
+      <th>Id</th>
       <th>Browser</th>
     </tr>
     </thead>
@@ -30,7 +31,8 @@
 
     <% @visits.each do |visit| %>
         <tr>
-          <td><%= visit['browser'] %></td>
+          <td><%= visit.visitor_token %></td>
+          <td><%= visit.browser %></td>
         </tr>
     <% end %>
 

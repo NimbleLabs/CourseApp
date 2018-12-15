@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Conversations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Participant</th>
+      <th>Messages</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @conversations.each do |conversation| %>
+      <tr>
+        <td><%= conversation.status %></td>
+        <td><%= conversation.participant_type %></td>
+        <td><%= conversation.messages.count %></td>
+        <td><%= link_to 'Show', admin_conversation_path(conversation) %></td>
+        <td><%= link_to 'Destroy', admin_conversation_path(conversation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

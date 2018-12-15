@@ -1,3 +1,28 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :bigint(8)        not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  role                   :integer          default("user")
+#  auth_token             :string
+#  stripe_customer_id     :string
+#  source                 :string
+#  provider               :string
+#  uid                    :string
+#  image                  :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  full_name              :string
+#  stripe_subscription_id :string
+#  stripe_charge_id       :string
+#  visitor_id             :string
+#
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -33,4 +33,13 @@ module ApplicationHelper
 
     html.html_safe
   end
+
+  def current_conversation
+    if user_signed_in?
+      Conversation.from_user(current_user)
+    else
+      return nil if current_visit.blank?
+      Conversation.from_visit(current_visit)
+    end
+  end
 end

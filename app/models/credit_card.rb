@@ -2,7 +2,7 @@
 #
 # Table name: credit_cards
 #
-#  id            :integer          not null, primary key
+#  id            :bigint(8)        not null, primary key
 #  name_on_card  :string
 #  card_number   :string
 #  exp_month     :integer
@@ -13,7 +13,7 @@
 #  stripe_id     :string
 #  last_4_digits :string
 #  cvc_check     :string
-#  user_id       :integer
+#  user_id       :bigint(8)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
