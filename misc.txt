@@ -13,6 +13,17 @@ Steps for Messaging:
 
 
 
+Lesson Steps for Site Chat Feature
+- Create simple chat UI (micro Vue app)
+- Nail down models: Conversation and Message models
+- Create conversation and messages via API (no channel streams yet)
+- Setup Connection
+- Set up ConversationChannel
+- Broadcast messages on create
+- Update micro Vue app to support receiving messages
+
+
+
 Steps for Stripe Implementation
 
 1) Add stripe gem
