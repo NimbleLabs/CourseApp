@@ -17,6 +17,7 @@
   <tr>
     <th>Index</th>
     <th>Title</th>
+    <th>Availability</th>
     <th>Has Notes?</th>
     <th colspan="2"></th>
   </tr>
@@ -27,6 +28,7 @@
       <tr>
         <td><%= lesson.index %></td>
         <td><%= link_to lesson.title, edit_admin_lesson_path(lesson) %></td>
+        <td><%= lesson.availability %></td>
         <td><%= lesson.content.present? %></td>
         <td><%= link_to 'Edit', edit_admin_lesson_path(lesson) %></td>
         <td><%= link_to 'Destroy', admin_lesson_path(lesson), method: :delete, data: { confirm: 'Are you sure?' } %></td>

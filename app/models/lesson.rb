@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: lessons
+#
+#  id           :bigint(8)        not null, primary key
+#  title        :string
+#  content      :text
+#  video_html   :text
+#  unit_id      :bigint(8)
+#  slug         :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  index        :integer
+#  availability :string
+#
+
 class Lesson < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]

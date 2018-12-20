@@ -54,6 +54,9 @@ GEM
       request_store
       safely_block (>= 0.2.1)
       user_agent_parser
+    annotate (2.7.4)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 13.0)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -294,6 +297,7 @@ PLATFORMS
 
 DEPENDENCIES
   ahoy_matey
+  annotate
   aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug
