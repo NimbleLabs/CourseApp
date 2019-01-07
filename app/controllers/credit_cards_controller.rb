@@ -66,7 +66,7 @@ class CreditCardsController < ApplicationController
       return
     end
 
-    user = current_user
+    #user = current_user
     #UserMailer.new_customer(user).deliver_later
     redirect_to root_path, notice: 'Pro subscription created.'
   end

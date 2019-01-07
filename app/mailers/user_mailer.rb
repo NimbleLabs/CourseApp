@@ -3,6 +3,6 @@ class UserMailer < ApplicationMailer
   def welcome_email
     @user = params[:user]
     # @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Welcome to NimbleHQ')
+    mail(to: @user.email, subject: 'Welcome to Nimble Labs')
   end
 end

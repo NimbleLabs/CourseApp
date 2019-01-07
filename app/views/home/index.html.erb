@@ -1,5 +1,5 @@
 <% content_for :title do %>
-    Learn to code and launch a new career with NimbleHQ
+    Learn to code and launch a new career with Nimble Labs
 <% end %>
 
 <div id="typed-strings">
@@ -44,7 +44,7 @@
 <div class="container-fluid section">
   <div class="container pt-5">
 
-    <h2 class="text-center">What is NimbleHQ?</h2>
+    <h2 class="text-center">What is Nimble Labs?</h2>
 
 
     <div class="row">
@@ -53,7 +53,7 @@
         <div class="card">
           <div class="card-body">
             <p class="card-text f-md">
-              NimbleHQ is a learning platform with the mission of helping one million people learn
+              Nimble Labs is a learning platform with the mission of helping one million people learn
               something new. We seek to take complex topics and break them down into bit-sized ideas
               that are easier to comprehend.
             </p>
@@ -80,7 +80,7 @@
 
       <div class="col-sm-12 col-md-6 mb-5 section d-flex align-items-center">
 
-        <h2 class="text-center">What makes NimbleHQ different?</h2>
+        <h2 class="text-center">What makes Nimble Labs different?</h2>
 
       </div>
 
@@ -118,7 +118,7 @@
 <div class="container-fluid section">
   <div class="container pt-5">
 
-    <h2 class="text-center mb-3">Your Instructor</h2>
+    <h2 class="text-center mb-3">A Message from Our Founder</h2>
 
     <div class="row">
 
@@ -126,8 +126,8 @@
 
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title text-center text-primary"><i class="fas fa-user-graduate"></i>
-              <strong>Harris Reynolds</strong></h5>
+            <!--<h5 class="card-title text-center text-primary"><i class="fas fa-user-graduate"></i>-->
+              <!--<strong>Harris Reynolds</strong></h5>-->
             <!--<p class="card-text f-md">-->
             <!--Harris wrote his first program around the age of 10 on a Texas Instruments computer.  He started developing software professionally in 1998 working for PricewaterhouseCoopers and later returned to school to get a Masters in Software Engineering.  Harris was previously the CTO for Shipt where he helped architect and build (with lots of help) early versions of their mobile apps, the grocery delivery backend platform and the shopper scheduling system.  He's also consulting with many startups and large corporations to help them build better software.-->
             <!--</p>-->
@@ -146,8 +146,12 @@
             </p>
 
             <p class="card-text f-md">
-              And I've also always enjoyed teaching. I've built NimbleHQ completely in the public in videos in order to
+              And I've also always enjoyed teaching. I've built Nimble Labs completely in the public in videos in order to
               share my knowledge with the world. Our first course is just the beginning.
+            </p>
+
+            <p class="card-text f-md font-weight-bold font-italic">
+              -- Harris Reynolds
             </p>
 
           </div>
@@ -180,7 +184,7 @@
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title"><strong><%= course.title %></strong></h5>
-            <p class="card-text f-md"><%= course.description %></p>
+            <p class="card-text f-md"><%= simple_format course.description %></p>
             <%= link_to 'View course', course, class: "btn btn-primary rounded-btn" %>
             <p class="card-text mt-3 text-muted "><%= course.units.count %> modules, <%= course.video_count %>
               videos</p>
