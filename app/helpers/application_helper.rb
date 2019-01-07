@@ -1,4 +1,10 @@
 module ApplicationHelper
+
+  def welcome_text
+    return 'Welcome!' if current_user.full_name.blank?
+    'Welcome ' + current_user.full_name + '!'
+  end
+
   def resource_name
     :user
   end
