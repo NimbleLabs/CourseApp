@@ -93,14 +93,14 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
       :user_name => ENV['SENDGRID_USERNAME'],
       :password => ENV['SENDGRID_PASSWORD'],
-      :domain => 'nimblehq.com',
+      :domain => 'nimblelabs.com',
       :address => 'smtp.sendgrid.net',
       :port => 587,
       :authentication => :plain,
       :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { host: 'www.nimblehq.com', :protocol => 'https' }
+  config.action_mailer.default_url_options = { host: 'www.nimblelabs.com', :protocol => 'https' }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
