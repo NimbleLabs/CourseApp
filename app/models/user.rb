@@ -54,6 +54,8 @@ class User < ApplicationRecord
           image: data['image']
       )
     end
+
+    user.update_attributes(full_name: data['name']) if user.full_name.blank?
     user
   end
 end
