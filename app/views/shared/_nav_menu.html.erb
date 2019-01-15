@@ -14,6 +14,12 @@
               <%= link_to 'Welcome ' + current_user.full_name + '!', account_path, class: 'nav-link' %>
             </li>
 
+            <% if current_user.admin? %>
+                <li class="nav-item">
+                  <%= link_to 'Admin', admin_path, class: 'nav-link' %>
+                </li>
+            <% end %>
+
             <li class="nav-item">
               <%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete %>
             </li>
