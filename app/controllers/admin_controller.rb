@@ -8,6 +8,7 @@ class AdminController < ApplicationController
   def index
     @users = User.all
     @visits = Ahoy::Visit.all
-    @events = Mongo::MongoService.new.events
+    @events = Ahoy::Event.all
+    # @events = Mongo::MongoService.new.events
   end
 end

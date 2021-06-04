@@ -24,12 +24,6 @@
 
           <div class="font-weight-bold text-center f-md">Get Started For Free</div>
 
-          <div class="text-center">
-            <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn rounded-btn btn-primary btn-lg btn-block my-3' do %>
-                <i class="fab fa-google"></i> &nbsp;&nbsp; Sign up with Google
-            <% end %>
-          </div>
-
           <h5 class="text-center">or</h5>
 
           <%= render 'shared/signup_form' %>
@@ -171,7 +165,7 @@
 
     <h1 class="text-center mb-5">Our First Course!</h1>
 
-    <% course = @courses.first %>
+    <%# course = @courses.first %>
 
     <div class="row">
 
@@ -179,11 +173,11 @@
 
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title"><strong><%= course.title %></strong></h5>
-            <p class="card-text f-md"><%= course.description %></p>
-            <%= link_to 'View course', course, class: "btn btn-primary rounded-btn" %>
-            <p class="card-text mt-3 text-muted "><%= course.units.count %> modules, <%= course.video_count %>
-              videos</p>
+<!--            <h5 class="card-title"><strong><%#= course.title %></strong></h5>-->
+<!--            <p class="card-text f-md"><%#= course.description %></p>-->
+            <%#= link_to 'View course', course, class: "btn btn-primary rounded-btn" %>
+<!--            <p class="card-text mt-3 text-muted "><%#= course.units.count %> modules, <%#= course.video_count %>-->
+<!--              videos</p>-->
           </div>
         </div>
 
@@ -202,8 +196,6 @@
             How to style a web page</li>
           <li class="list-group-item"><i class="fas fa-check-circle text-success"></i>
             What MVC is and why it is useful</li>
-          <li class="list-group-item"><i class="fas fa-check-circle text-success"></i>
-            And lots more ... <%= course.video_count %> bit-sized videos!</li>
 
         </ul>
 

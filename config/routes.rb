@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   get 'admin', to: 'admin#index', as: 'admin'
   devise_for :users, :path_names => {:sign_in => 'signin', :sign_up => 'register', :sign_out => 'logout'},
-             :controllers => {registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
+             :controllers => {registrations: 'registrations'}
 
   get 'home/index'
   get 'privacy', to: 'home#privacy', as: 'privacy'
