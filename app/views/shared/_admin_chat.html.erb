@@ -1,0 +1,54 @@
+<div id="adminchat" class="container">
+
+  <h2>Send Message</h2>
+
+  <div class="d-flex flex-row">
+    <textarea v-model="message" class="form-control" id="messageInput" rows="2" placeholder="Ask a question"></textarea>
+    <button @click="onSendClick" class="btn rounded-circle send-button bg-primary text-white ml-2" style="width: 40px; height: 40px">
+      <svg aria-hidden="true" data-prefix="fas" data-icon="paper-plane" class="svg-inline--fa fa-paper-plane fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></svg>
+    </button>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+<script>
+    var NIMBLE_HQ_C_ID = <%= @conversation.id %>
+</script>
+
+<script>
+    var app = new Vue({
+        el: '#adminchat',
+        data: {
+            conversationId: NIMBLE_HQ_C_ID,
+            message: ''
+        },
+
+        mounted() {
+            console.log('Admin, this.conversationId: ' + this.conversationId)
+        },
+        methods: {
+            onSendClick() {
+
+                var request = {
+                    message: this.message
+                }
+                var settings = {
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(request)   ,
+                    dataType: "json",
+                    success: (data, textStatus) => {
+                        console.log('Send success')
+                        console.log(data)
+                        console.log('Status: '  + textStatus)
+                        this.message = ''
+                    }
+                }
+
+                $.ajax('/admin/message/' + this.conversationId + '.json', settings)
+            }
+        }
+    })
+</script>

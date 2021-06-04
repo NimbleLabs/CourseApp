@@ -26,8 +26,13 @@
   border-radius: 8px !important;
   background-color: #ffffff;
   color: #333333;
+  border: none !important;
   /*overflow: hidden !important;*/
   /*opacity: 1 !important;*/
+}
+
+.chat-messages {
+  overflow-y: auto;
 }
 
 .start-conversation {
@@ -49,4 +54,13 @@
 .popover {
   top: auto !important;
   left: auto !important;
+}
+
+.send-button {
+  width: 40px;
+  height: 40px;
+}
+
+.chat-message {
+  border-radius: 2rem !important;
 }

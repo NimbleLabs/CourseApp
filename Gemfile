@@ -22,7 +22,7 @@ gem 'friendly_id'
 gem 'aws-sdk-s3', require: false
 gem 'rollbar'
 gem 'recaptcha'
-gem 'omniauth-google-oauth2'
+# gem 'omniauth-google-oauth2'
 gem 'stripe'
 gem 'redis'
 gem 'sidekiq'

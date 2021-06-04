@@ -1,9 +1,28 @@
 rails g scaffold Course title:string description:text
 rails g scaffold Unit title:string description:text course:references
 rails g scaffold Lesson title:string content:text video_html:text unit:references
-
-
 rails g scaffold Post title:string content:text video_html:text
+
+rails g scaffold Conversation status:string uuid:string
+rails g model ConversationParticipant status:string conversation:references messageable_id:integer messageable_type:string
+rails g model Message body:text status:string conversation:references messageable_id:integer messageable_type:string
+
+Steps for Messaging:
+1) Send first message via client, create conversation, then create message, broadcast message
+2) Create admin screen for viewing participating in conversations
+
+
+
+Lesson Steps for Site Chat Feature
+- Create simple chat UI (micro Vue app)
+- Nail down models: Conversation and Message models
+- Create conversation and messages via API (no channel streams yet)
+- Setup Connection
+- Set up ConversationChannel
+- Broadcast messages on create
+- Update micro Vue app to support receiving messages
+
+
 
 Steps for Stripe Implementation
 

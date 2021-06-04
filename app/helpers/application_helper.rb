@@ -39,4 +39,16 @@ module ApplicationHelper
 
     html.html_safe
   end
+
+  def current_conversation
+    if user_signed_in?
+      Conversation.from_user(current_user)
+    else
+      if current_visit.blank?
+        return Conversation.from_visit(cookies[:ahoy_visitor])
+      end
+
+      Conversation.from_visit(current_visit.visitor_id)
+    end
+  end
 end

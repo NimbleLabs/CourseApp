@@ -14,5 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require ahoy
+//= require cable
 
 ahoy.trackAll();

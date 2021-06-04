@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @conversation.status %>
+</p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @conversation.uuid %>
+</p>
+
+<%= render 'shared/admin_chat' %>
+
+<h1>Messages</h1>
+
+<table class="table table-bordered table-sm">
+  <thead>
+  <tr>
+    <th>From</th>
+    <th>Message</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @conversation.messages.each do |message| %>
+      <tr>
+        <td><%= message.from %></td>
+        <td><%= message.body %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back', admin_conversations_path %>

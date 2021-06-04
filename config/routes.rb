@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  post 'conversations', to: 'conversations#create'
+  post 'message/:id', to: 'conversations#send_message'
+  get 'messages/:id', to: 'conversations#messages'
+
   get 'go-pro', to: 'home#pricing', as: 'pricing'
   resources :photos
 
@@ -8,6 +12,8 @@ Rails.application.routes.draw do
     resources :units, as: 'admin_units'
     resources :lessons, as: 'admin_lessons'
     resources :posts, as: 'admin_posts'
+    resources :conversations, as: 'admin_conversations'
+    post 'message/:id', to: 'conversations#send_message'
 
     # authenticate :user, lambda {|u| u.admin?} do
     #   mount Sidekiq::Web => '/sidekiq'
@@ -29,7 +35,7 @@ Rails.application.routes.draw do
   get 'account', to: 'account#index', as: 'account'
 
   devise_for :users, :path_names => {:sign_in => 'signin', :sign_up => 'register', :sign_out => 'logout'},
-             :controllers => {registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
+             :controllers => {registrations: 'registrations'}
 
   get 'privacy', to: 'home#privacy', as: 'privacy'
   get 'terms', to: 'home#terms', as: 'terms'

@@ -30,4 +30,8 @@ class Ahoy::Visit < ApplicationRecord
 
   has_many :events, class_name: "Ahoy::Event"
   belongs_to :user, optional: true
+
+  def visitor_id
+    visitor_token
+  end
 end

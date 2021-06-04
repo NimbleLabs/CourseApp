@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :check_captcha, :configure_permitted_parameters, only: [:create]
+  # prepend_before_action :check_captcha, :configure_permitted_parameters, only: [:create]
   layout 'devise'
 
   def create
