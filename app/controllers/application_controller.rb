@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :print_visit
 
   layout :layout_by_resource
 
@@ -16,13 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def print_visit
-    puts '---------------------------------'
-    puts current_visit.inspect
-    puts 'Visitor id cookie: ' + cookies[:ahoy_visitor]
-    puts '---------------------------------'
-  end
 
   def layout_by_resource
     if devise_controller?
