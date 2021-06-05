@@ -24,7 +24,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   # config.assets.js_compressor = :uglifier
-  config.assets.js_compressor = Uglifier.new(harmony: true)
+  # config.assets.js_compressor = Uglifier.new(harmony: true)
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -91,16 +91,20 @@ Rails.application.configure do
   end
 
   ActionMailer::Base.smtp_settings = {
-      :user_name => ENV['SENDGRID_USERNAME'],
-      :password => ENV['SENDGRID_PASSWORD'],
-      :domain => 'nimblelabs.com',
-      :address => 'smtp.sendgrid.net',
-      :port => 587,
+      :address        => 'smtp.sendgrid.net',
+      :port           => 587,
       :authentication => :plain,
+      :user_name      => 'apikey',
+      :password       => ENV['SENDGRID_API_KEY'],
+      :domain         => 'www.nimblelabs.com',
       :enable_starttls_auto => true
   }
 
+  Rails.application.routes.default_url_options[:host] = 'www.nimblelabs.com'
+
+  config.default_uri_scheme = 'https://'
   config.action_mailer.default_url_options = { host: 'www.nimblelabs.com', :protocol => 'https' }
+  config.root_url = 'https://www.nimblelabs.com'
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
