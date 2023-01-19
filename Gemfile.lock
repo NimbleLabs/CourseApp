@@ -114,7 +114,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     connection_pool (2.2.5)
     crass (1.0.6)
     device_detector (1.0.5)
@@ -135,9 +135,9 @@ GEM
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     geocoder (1.6.7)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
-    i18n (1.8.10)
+    globalid (1.0.1)
+      activesupport (>= 5.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
     jbuilder (2.11.2)
@@ -157,19 +157,19 @@ GEM
     method_source (1.0.0)
     mini_magick (4.11.0)
     mini_mime (1.0.3)
-    minitest (5.14.4)
+    minitest (5.17.0)
     mongo (2.14.0)
       bson (>= 4.8.2, < 5.0.0)
     msgpack (1.4.2)
     nio4r (2.5.7)
-    nokogiri (1.11.7-x86_64-darwin)
+    nokogiri (1.14.0-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.2.3)
     public_suffix (4.0.6)
     puma (4.3.8)
       nio4r (~> 2.0)
-    racc (1.5.2)
+    racc (1.6.2)
     rack (2.2.3)
     rack-proxy (0.7.0)
       rack
@@ -251,7 +251,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -269,10 +269,10 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.2)
+    zeitwerk (2.6.6)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   ahoy_matey
