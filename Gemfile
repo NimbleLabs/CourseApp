@@ -7,7 +7,7 @@ gem 'rails', '~> 6.1.3.2'
 gem 'pg'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.4'
 gem 'jbuilder', '~> 2.7'
 
 gem 'coffee-rails', '~> 4.2'
